@@ -3,42 +3,9 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Clock, TrendingUp, BookOpen, ArrowRight } from 'lucide-react'
+import { algorithms } from '@/config/site'
 
-const recentAlgorithms = [
-  {
-    id: 1,
-    title: '快速排序算法详解',
-    description: '深入理解快速排序的原理、实现和优化策略，包含可视化演示和性能分析。',
-    category: '排序算法',
-    difficulty: '中等',
-    readTime: '8 分钟',
-    publishDate: '2024-01-15',
-    tags: ['排序', '分治', '递归'],
-    thumbnail: '/images/algorithms/quicksort.gif'
-  },
-  {
-    id: 2,
-    title: '动态规划入门指南',
-    description: '从斐波那契数列开始，逐步掌握动态规划的思想和经典应用场景。',
-    category: '动态规划',
-    difficulty: '困难',
-    readTime: '12 分钟',
-    publishDate: '2024-01-10',
-    tags: ['DP', '优化', '状态转移'],
-    thumbnail: '/images/algorithms/dp.gif'
-  },
-  {
-    id: 3,
-    title: '二叉树遍历全解析',
-    description: '前序、中序、后序遍历的递归与迭代实现，以及层序遍历的应用。',
-    category: '数据结构',
-    difficulty: '简单',
-    readTime: '6 分钟',
-    publishDate: '2024-01-08',
-    tags: ['二叉树', '遍历', '递归'],
-    thumbnail: '/images/algorithms/tree-traversal.gif'
-  }
-]
+const recentAlgorithms = algorithms.slice(0, 3)
 
 const difficultyColors = {
   '简单': 'bg-green-100 text-green-800',
@@ -199,4 +166,6 @@ export default function RecentAlgorithms() {
     </section>
   )
 }
+
+
 

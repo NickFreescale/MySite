@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Download, Github, Mail } from 'lucide-react'
+import { ArrowRight, Download, Mail } from 'lucide-react'
+import { siteConfig } from '@/config/site'
 
 export default function Hero() {
   return (
@@ -37,7 +38,7 @@ export default function Hero() {
           >
             <span className="text-gray-900">你好，我是</span>
             <br />
-            <span className="text-gradient">全栈开发者</span>
+            <span className="text-gradient">{siteConfig.name}</span>
           </motion.h1>
 
           {/* 副标题 */}
@@ -47,9 +48,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            热爱编程，专注于创建优雅的用户体验和高效的解决方案。
+            {siteConfig.title}
             <br />
-            在这里分享我的项目作品、算法心得和技术思考。
+            {siteConfig.description}
           </motion.p>
 
           {/* 统计数据 */}
@@ -60,16 +61,20 @@ export default function Hero() {
             className="flex flex-wrap justify-center gap-8 mb-12"
           >
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600">15+</div>
+              <div className="text-3xl font-bold text-primary-600">{siteConfig.stats.projects}+</div>
               <div className="text-gray-600">完成项目</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600">25+</div>
-              <div className="text-gray-600">算法讲解</div>
+              <div className="text-3xl font-bold text-primary-600">{siteConfig.stats.algorithms}+</div>
+              <div className="text-gray-600">算法经验</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600">2+</div>
+              <div className="text-3xl font-bold text-primary-600">{siteConfig.stats.experience}+</div>
               <div className="text-gray-600">年经验</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary-600">{siteConfig.stats.competitions}</div>
+              <div className="text-gray-600">竞赛获奖</div>
             </div>
           </motion.div>
 
@@ -105,16 +110,7 @@ export default function Hero() {
             className="flex justify-center space-x-6"
           >
             <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 text-gray-600 hover:text-primary-600 hover:bg-white rounded-full transition-all duration-200 hover:shadow-md"
-              aria-label="GitHub"
-            >
-              <Github className="w-6 h-6" />
-            </a>
-            <a
-              href="mailto:your.email@example.com"
+              href={`mailto:${siteConfig.email}`}
               className="p-3 text-gray-600 hover:text-primary-600 hover:bg-white rounded-full transition-all duration-200 hover:shadow-md"
               aria-label="Email"
             >
@@ -141,4 +137,6 @@ export default function Hero() {
     </section>
   )
 }
+
+
 

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Code, Home, FolderOpen, BookOpen, User } from 'lucide-react'
+import { siteConfig } from '@/config/site'
 
 const navigation = [
   { name: '首页', href: '/', icon: Home },
@@ -44,7 +45,7 @@ export default function Header() {
               <Code className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
-              我的作品集
+              {siteConfig.name}的作品集
             </span>
           </Link>
 
@@ -112,4 +113,6 @@ export default function Header() {
     </header>
   )
 }
+
+
 

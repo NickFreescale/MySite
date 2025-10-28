@@ -1,22 +1,17 @@
 import Link from 'next/link'
-import { Github, Mail, Linkedin, Heart, ExternalLink } from 'lucide-react'
+import { Mail, Linkedin, Heart, ExternalLink } from 'lucide-react'
+import { siteConfig } from '@/config/site'
 
 const socialLinks = [
   {
-    name: 'GitHub',
-    href: 'https://github.com/yourusername',
-    icon: Github,
-    color: 'hover:text-gray-900'
-  },
-  {
     name: 'Email',
-    href: 'mailto:your.email@example.com',
+    href: `mailto:${siteConfig.email}`,
     icon: Mail,
     color: 'hover:text-blue-600'
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/in/yourusername',
+    href: siteConfig.linkedin,
     icon: Linkedin,
     color: 'hover:text-blue-700'
   }
@@ -93,21 +88,21 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-gray-600">
               <li>
                 <a 
-                  href="mailto:your.email@example.com"
+                  href={`mailto:${siteConfig.email}`}
                   className="hover:text-primary-600 transition-colors duration-200"
                 >
-                  your.email@example.com
+                  {siteConfig.email}
                 </a>
               </li>
-              <li>位置：中国</li>
+              <li>位置：{siteConfig.location}</li>
               <li>
                 <a
-                  href="https://github.com/yourusername"
+                  href={siteConfig.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary-600 transition-colors duration-200 inline-flex items-center space-x-1"
                 >
-                  <span>GitHub</span>
+                  <span>LinkedIn</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
@@ -139,4 +134,6 @@ export default function Footer() {
     </footer>
   )
 }
+
+
 

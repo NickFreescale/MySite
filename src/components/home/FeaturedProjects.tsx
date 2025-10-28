@@ -3,40 +3,10 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ExternalLink, Github, ArrowRight } from 'lucide-react'
+import { ExternalLink, ArrowRight } from 'lucide-react'
+import { projects } from '@/config/site'
 
-const featuredProjects = [
-  {
-    id: 1,
-    title: '电商平台',
-    description: '基于Next.js和Node.js构建的全栈电商平台，支持用户注册、商品管理、订单处理等完整功能。',
-    image: '/images/projects/ecommerce.jpg',
-    technologies: ['Next.js', 'Node.js', 'MongoDB', 'Stripe'],
-    github: 'https://github.com/yourusername/ecommerce',
-    demo: 'https://your-ecommerce-demo.vercel.app',
-    featured: true
-  },
-  {
-    id: 2,
-    title: '算法可视化工具',
-    description: '交互式算法可视化平台，帮助用户理解排序、搜索等经典算法的执行过程。',
-    image: '/images/projects/algorithm-visualizer.jpg',
-    technologies: ['React', 'TypeScript', 'Canvas API', 'Framer Motion'],
-    github: 'https://github.com/yourusername/algorithm-visualizer',
-    demo: 'https://your-algo-viz.vercel.app',
-    featured: true
-  },
-  {
-    id: 3,
-    title: '任务管理应用',
-    description: '现代化的任务管理工具，支持项目分组、进度追踪、团队协作等功能。',
-    image: '/images/projects/task-manager.jpg',
-    technologies: ['Vue.js', 'Express.js', 'PostgreSQL', 'Socket.io'],
-    github: 'https://github.com/yourusername/task-manager',
-    demo: 'https://your-task-app.vercel.app',
-    featured: true
-  }
-]
+const featuredProjects = projects.filter(project => project.featured)
 
 export default function FeaturedProjects() {
   return (
@@ -84,24 +54,17 @@ export default function FeaturedProjects() {
                 {/* 悬浮操作按钮 */}
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                   <div className="flex space-x-3">
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white rounded-full text-gray-900 hover:bg-primary-600 hover:text-white transition-colors"
-                      aria-label="查看演示"
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white rounded-full text-gray-900 hover:bg-primary-600 hover:text-white transition-colors"
-                      aria-label="查看源码"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
+                    {project.demo && project.demo !== '#' && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white rounded-full text-gray-900 hover:bg-primary-600 hover:text-white transition-colors"
+                        aria-label="查看演示"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -138,24 +101,17 @@ export default function FeaturedProjects() {
                   </Link>
                   
                   <div className="flex space-x-3">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-500 hover:text-gray-700 transition-colors"
-                      aria-label="GitHub"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-500 hover:text-gray-700 transition-colors"
-                      aria-label="演示"
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
+                    {project.demo && project.demo !== '#' && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-500 hover:text-gray-700 transition-colors"
+                        aria-label="演示"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -183,4 +139,6 @@ export default function FeaturedProjects() {
     </section>
   )
 }
+
+
 
