@@ -4,9 +4,9 @@ import AlgorithmsGrid from '@/components/algorithms/AlgorithmsGrid'
 import AlgorithmCategories from '@/components/algorithms/AlgorithmCategories'
 
 export const metadata: Metadata = {
-  title: '算法讲解',
-  description: '深入浅出的算法教程，包含排序、搜索、动态规划、图论等经典算法的详细讲解和可视化演示。',
-  keywords: ['算法教程', '数据结构', '算法可视化', '编程学习', '计算机科学']
+  title: '技术笔记',
+  description: '记录开发过程中的技术心得、算法优化、性能调优和工程实践经验。',
+  keywords: ['技术笔记', '开发心得', '算法优化', 'C++', 'Qt', '计算机图形学']
 }
 
 export default function AlgorithmsPage() {
@@ -20,6 +20,7 @@ export default function AlgorithmsPage() {
     </div>
   )
 }
+
 
 
 

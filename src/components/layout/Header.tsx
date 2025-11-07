@@ -3,20 +3,31 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Code, Home, FolderOpen, BookOpen, User } from 'lucide-react'
+import { Menu, X, Code, Home, FolderOpen, BookOpen, User, Globe } from 'lucide-react'
 import { siteConfig } from '@/config/site'
+import { useLanguage } from '@/contexts/LanguageContext'
 
-const navigation = [
+const navigationZh = [
   { name: '首页', href: '/', icon: Home },
-  { name: '项目展示', href: '/projects', icon: FolderOpen },
-  { name: '算法讲解', href: '/algorithms', icon: BookOpen },
+  { name: '项目作品', href: '/projects', icon: FolderOpen },
+  { name: '技术笔记', href: '/algorithms', icon: BookOpen },
   { name: '关于我', href: '/about', icon: User },
+]
+
+const navigationEn = [
+  { name: 'Home', href: '/', icon: Home },
+  { name: 'Projects', href: '/projects', icon: FolderOpen },
+  { name: 'Tech Notes', href: '/algorithms', icon: BookOpen },
+  { name: 'About', href: '/about', icon: User },
 ]
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const { language, setLanguage } = useLanguage()
+  
+  const navigation = language === 'zh' ? navigationZh : navigationEn
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,6 +81,16 @@ export default function Header() {
                 </Link>
               )
             })}
+            
+            {/* Language Switcher */}
+            <button
+              onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
+              className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all duration-200"
+              aria-label="Switch language"
+            >
+              <Globe className="w-4 h-4" />
+              <span>{language === 'zh' ? 'EN' : '中'}</span>
+            </button>
           </nav>
 
           {/* Mobile menu button */}
@@ -106,6 +127,18 @@ export default function Header() {
                   </Link>
                 )
               })}
+              
+              {/* Mobile Language Switcher */}
+              <button
+                onClick={() => {
+                  setLanguage(language === 'zh' ? 'en' : 'zh')
+                  setIsMenuOpen(false)
+                }}
+                className="w-full flex items-center space-x-2 px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all duration-200"
+              >
+                <Globe className="w-5 h-5" />
+                <span>{language === 'zh' ? 'Switch to English' : '切换到中文'}</span>
+              </button>
             </div>
           </div>
         )}

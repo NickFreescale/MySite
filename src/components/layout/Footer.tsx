@@ -1,31 +1,37 @@
+'use client'
+
 import Link from 'next/link'
 import { Mail, Linkedin, Heart, ExternalLink } from 'lucide-react'
 import { siteConfig } from '@/config/site'
-
-const socialLinks = [
-  {
-    name: 'Email',
-    href: `mailto:${siteConfig.email}`,
-    icon: Mail,
-    color: 'hover:text-blue-600'
-  },
-  {
-    name: 'LinkedIn',
-    href: siteConfig.linkedin,
-    icon: Linkedin,
-    color: 'hover:text-blue-700'
-  }
-]
-
-const quickLinks = [
-  { name: '首页', href: '/' },
-  { name: '项目展示', href: '/projects' },
-  { name: '算法讲解', href: '/algorithms' },
-  { name: '关于我', href: '/about' }
-]
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Footer() {
+  const { language, t } = useLanguage()
   const currentYear = new Date().getFullYear()
+  
+  const socialLinks = [
+    {
+      name: 'Email',
+      href: `mailto:${siteConfig.email}`,
+      icon: Mail,
+      color: 'hover:text-blue-600'
+    },
+    {
+      name: 'LinkedIn',
+      href: siteConfig.linkedin,
+      icon: Linkedin,
+      color: 'hover:text-blue-700'
+    }
+  ]
+  
+  const quickLinks = [
+    { name: t.nav.home, href: '/' },
+    { name: t.nav.projects, href: '/projects' },
+    { name: t.nav.blog, href: '/algorithms' },
+    { name: t.nav.about, href: '/about' }
+  ]
+  
+  const visibleSocialLinks = socialLinks.filter(link => !!link.href)
 
   return (
     <footer className="bg-gray-50 border-t border-gray-200">
@@ -37,13 +43,15 @@ export default function Footer() {
               <div className="p-2 bg-primary-600 rounded-lg">
                 <span className="text-white font-bold text-lg">&lt;/&gt;</span>
               </div>
-              <span className="text-xl font-bold text-gray-900">我的作品集</span>
+              <span className="text-xl font-bold text-gray-900">{language === 'zh' ? `${siteConfig.name}的作品集` : `${siteConfig.name}'s Portfolio`}</span>
             </div>
             <p className="text-gray-600 mb-4 max-w-md">
-              分享我的编程项目、算法讲解和技术心得。持续学习，持续创造，用代码改变世界。
+              {language === 'zh' 
+                ? '分享我的编程项目、算法讲解和技术心得。持续学习，持续创造，用代码改变世界。' 
+                : 'Sharing my programming projects, algorithm tutorials, and technical insights. Continuous learning, continuous creation.'}
             </p>
             <div className="flex items-center space-x-4">
-              {socialLinks.map((link) => {
+              {visibleSocialLinks.map((link) => {
                 const Icon = link.icon
                 return (
                   <a
@@ -64,7 +72,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
-              快速导航
+              {language === 'zh' ? '快速导航' : 'Quick Links'}
             </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
@@ -83,7 +91,7 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
-              联系方式
+              {language === 'zh' ? '联系方式' : 'Contact'}
             </h3>
             <ul className="space-y-2 text-sm text-gray-600">
               <li>
@@ -94,18 +102,20 @@ export default function Footer() {
                   {siteConfig.email}
                 </a>
               </li>
-              <li>位置：{siteConfig.location}</li>
-              <li>
-                <a
-                  href={siteConfig.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary-600 transition-colors duration-200 inline-flex items-center space-x-1"
-                >
-                  <span>LinkedIn</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
+              <li>{language === 'zh' ? '位置' : 'Location'}: {language === 'zh' ? siteConfig.location : 'China'}</li>
+              {siteConfig.linkedin && (
+                <li>
+                  <a
+                    href={siteConfig.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary-600 transition-colors duration-200 inline-flex items-center space-x-1"
+                  >
+                    <span>LinkedIn</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -114,9 +124,9 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-1 text-sm text-gray-600">
-              <span>© {currentYear} 我的作品集. Made with</span>
+              <span>© {currentYear} {language === 'zh' ? `${siteConfig.name}的作品集` : `${siteConfig.name}'s Portfolio`}. {language === 'zh' ? '使用' : 'Made with'}</span>
               <Heart className="w-4 h-4 text-red-500 fill-current" />
-              <span>using Next.js & Tailwind CSS</span>
+              <span>{language === 'zh' ? '构建，采用' : 'using'} Next.js & Tailwind CSS</span>
             </div>
             
             <div className="flex items-center space-x-6 text-sm text-gray-600">
@@ -125,7 +135,7 @@ export default function Footer() {
                 href="/sitemap.xml"
                 className="hover:text-primary-600 transition-colors duration-200"
               >
-                网站地图
+                {language === 'zh' ? '网站地图' : 'Sitemap'}
               </Link>
             </div>
           </div>

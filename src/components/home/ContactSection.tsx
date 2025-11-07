@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, MessageCircle, Github, Linkedin, MapPin, Phone } from 'lucide-react'
+import { Mail, MessageCircle, Github, MapPin, Phone } from 'lucide-react'
 
 const contactMethods = [
   {
@@ -27,14 +27,6 @@ const contactMethods = [
     contact: 'your-wechat-id',
     href: '#',
     color: 'from-green-500 to-emerald-500'
-  },
-  {
-    icon: Linkedin,
-    title: 'LinkedIn',
-    description: '职业社交网络',
-    contact: '/in/yourprofile',
-    href: 'https://linkedin.com/in/yourprofile',
-    color: 'from-blue-600 to-blue-800'
   }
 ]
 

@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { 
   Mail, 
   Github, 
-  Linkedin, 
   MessageCircle, 
   ArrowRight,
   Download,
@@ -28,14 +27,6 @@ const contactMethods = [
     href: 'https://github.com/yourusername',
     description: '查看我的开源项目',
     color: 'from-gray-700 to-gray-900'
-  },
-  {
-    icon: Linkedin,
-    title: 'LinkedIn',
-    value: '/in/yourprofile',
-    href: 'https://linkedin.com/in/yourprofile',
-    description: '职业社交网络',
-    color: 'from-blue-600 to-blue-800'
   },
   {
     icon: MessageCircle,
@@ -289,6 +280,9 @@ export default function AboutContact() {
     </section>
   )
 }
+
+
+
 
 
 

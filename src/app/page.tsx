@@ -1,17 +1,15 @@
 import Hero from '@/components/home/Hero'
+import TechStack from '@/components/home/TechStack'
 import FeaturedProjects from '@/components/home/FeaturedProjects'
-import SkillsSection from '@/components/home/SkillsSection'
-import RecentAlgorithms from '@/components/home/RecentAlgorithms'
-import ContactSection from '@/components/home/ContactSection'
+import QuickContact from '@/components/home/QuickContact'
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
+      <TechStack />
       <FeaturedProjects />
-      <SkillsSection />
-      <RecentAlgorithms />
-      <ContactSection />
+      <QuickContact />
     </div>
   )
 }

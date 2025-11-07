@@ -12,6 +12,7 @@ import {
   BarChart3,
   Zap
 } from 'lucide-react'
+import { algorithms } from '@/config/site'
 
 const difficultyColors = {
   '简单': 'bg-green-100 text-green-800',

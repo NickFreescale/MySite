@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Download, MapPin, Calendar, Coffee } from 'lucide-react'
+import { siteConfig } from '@/config/site'
 
 export default function AboutHero() {
   return (
@@ -23,7 +24,7 @@ export default function AboutHero() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
               你好，我是
               <br />
-              <span className="text-gradient">张三</span>
+              <span className="text-gradient">{siteConfig.name}</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
@@ -79,19 +80,31 @@ export default function AboutHero() {
           >
             <div className="relative w-80 h-80 mx-auto">
               {/* 头像背景 */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-400 via-blue-500 to-purple-600 rounded-full"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-400 via-blue-500 to-purple-600 rounded-2xl transform rotate-6"></div>
               
-              {/* 头像占位符 */}
-              <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center">
-                <div className="w-40 h-40 bg-gradient-to-br from-primary-100 to-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-6xl font-bold text-primary-600">张</span>
+              {/* 头像容器 */}
+              <div className="absolute inset-2 bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-2xl">
+                {/* 如果有真实照片，替换这部分为 <img src="/images/profile.jpg" alt="个人照片" /> */}
+                <div className="w-full h-full bg-gradient-to-br from-primary-100 to-blue-100 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-32 h-32 bg-gradient-to-br from-primary-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-5xl font-bold text-white">{siteConfig.name[0]}</span>
+                    </div>
+                    <p className="text-gray-600 text-sm">添加个人照片：<br/>/public/images/profile.jpg</p>
+                  </div>
                 </div>
               </div>
 
-              {/* 装饰元素 */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-yellow-400 rounded-full opacity-80 animate-bounce"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-green-400 rounded-full opacity-80 animate-pulse"></div>
-              <div className="absolute top-1/2 -right-8 w-12 h-12 bg-pink-400 rounded-full opacity-80 animate-ping"></div>
+              {/* 装饰元素 - 技能图标 */}
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-lg shadow-lg flex items-center justify-center">
+                <span className="text-2xl">💻</span>
+              </div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-white rounded-lg shadow-lg flex items-center justify-center">
+                <span className="text-2xl">🎨</span>
+              </div>
+              <div className="absolute top-1/2 -right-6 w-14 h-14 bg-white rounded-lg shadow-lg flex items-center justify-center">
+                <span className="text-xl">🚀</span>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -124,6 +137,7 @@ export default function AboutHero() {
     </section>
   )
 }
+
 
 
 

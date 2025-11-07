@@ -46,18 +46,33 @@ export default function AboutStory() {
             我的故事
           </h2>
           <div className="max-w-4xl mx-auto">
+            {/* 职业目标 */}
+            <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8 mb-8">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
+                💡 我的职业目标
+              </h3>
+              <p className="text-lg text-gray-700 leading-relaxed text-center">
+                专注于<strong>工业软件</strong>与<strong>3D可视化</strong>领域，
+                致力于开发高性能、用户友好的专业软件系统。
+                希望能够将计算机图形学、算法优化和工程实践结合，
+                为制造业和医疗行业提供创新的数字化解决方案。
+              </p>
+            </div>
+
+            {/* 我的故事 */}
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              我的编程之路始于大学时期的一门计算机课程。那时的我被代码的逻辑性和创造性深深震撼，
-              从简单的Hello World到复杂的算法实现，每一步都充满了探索的乐趣。
+              我的编程之路始于大学时期对智能车竞赛的热爱。从车道线识别算法到PID控制，
+              每一行代码都让我体会到算法的力量。两次全国竞赛的获奖经历，不仅锻炼了我的技术能力，
+              更让我学会了如何在硬件限制下追求极致性能。
             </p>
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              毕业后，我投身于软件开发行业，从前端到后端，从移动端到全栈，不断拓宽自己的技术边界。
-              在这个过程中，我深深体会到技术不仅仅是工具，更是连接想法与现实的桥梁。
+              毕业后，我进入工业软件领域，从3D打印切片软件到正畸设计系统，
+              我深深体会到<strong>技术不仅仅是工具，更是连接创意与现实的桥梁</strong>。
+              在开发中，我始终追求代码的优雅性和系统的健壮性，用C++/Qt构建专业级应用。
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              现在的我，不仅专注于技术的深度，更关注如何用技术解决真实世界的问题，
-              如何通过优雅的代码和设计为用户带来更好的体验。这就是我创建这个作品集的初衷——
-              分享知识，展示创造，与更多志同道合的人交流学习。
+              现在的我，专注于计算机图形学、几何算法和GPU加速技术，
+              希望能够通过技术创新，为工业制造和医疗健康带来更高效的数字化解决方案。
             </p>
           </div>
         </motion.div>
@@ -139,6 +154,7 @@ export default function AboutStory() {
     </section>
   )
 }
+
 
 
 

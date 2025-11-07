@@ -25,29 +25,25 @@ export default function AlgorithmsHero() {
           </div>
         </motion.div>
 
-        {/* 标题 */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
-        >
-          <span className="text-gradient">算法讲解</span>
-          <br />
-          <span className="text-gray-900">让复杂变简单</span>
-        </motion.h1>
+          {/* 标题 */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
+          >
+            <span className="text-gradient">技术笔记</span>
+          </motion.h1>
 
-        {/* 描述 */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed"
-        >
-          通过可视化演示和详细解析，帮助你深入理解经典算法。
-          <br />
-          从基础概念到高级应用，系统掌握算法思维。
-        </motion.p>
+          {/* 描述 */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed"
+          >
+            记录开发过程中的技术心得、算法优化和工程实践经验
+          </motion.p>
 
         {/* 特色统计 */}
         <motion.div
@@ -141,6 +137,7 @@ export default function AlgorithmsHero() {
     </section>
   )
 }
+
 
 
 
