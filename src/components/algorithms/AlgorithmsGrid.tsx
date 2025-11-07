@@ -55,16 +55,11 @@ export default function AlgorithmsGrid() {
                 </div>
               </div>
               
-              {/* 难度和特色标签 */}
+              {/* 难度标签 */}
               <div className="absolute top-4 left-4 flex space-x-2">
                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${difficultyColors[algorithm.difficulty as keyof typeof difficultyColors]}`}>
                   {algorithm.difficulty}
                 </span>
-                {algorithm.featured && (
-                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                    精选
-                  </span>
-                )}
               </div>
 
             </div>
