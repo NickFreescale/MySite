@@ -74,11 +74,11 @@ export const projects: Project[] = [
   {
     id: 3,
     title: "基于外向内追踪技术的机械臂轨迹规划系统",
-    description: "手持设备在空间中移动，通过电脑软件对移动轨迹进行编辑，然后让机械臂复现设备记录的轨迹。适用于机械臂打磨、电子产品组装等工业应用。",
-    image: "/images/projects/armTracker.gif", // 首页使用GIF
-    detailImage: "/images/projects/trackerApp.jpg", // 项目页使用静态图片（你可以改成其他图片路径）
+    description: "手持设备在空间中移动，通过电脑软件对移动轨迹进行编辑，然后让机械臂复现设备记录的轨迹。适用于机械臂打磨、电子产品组装和医疗机器人等场景。",
+    image: "/images/projects/tracker/armTracker.gif", // 首页和所有展示页面使用GIF
+    topImage: "/images/projects/tracker/tracker_head.gif", // 项目详情页顶部也使用GIF
     category: "tool",
-    technologies: ["Qt/C++", "OpenVR", "OpenGL", "TCP通信", "VR开发"],
+    technologies: ["Python", "TypeScript", "MuJoCo", "OpenVR", "WebSocket", "RESTful API", "卡尔曼滤波"],
     demo: "#",
     featured: true,
     createdAt: "2022-03-01"
@@ -107,14 +107,15 @@ export const projects: Project[] = [
   },
   {
     id: 6,
-    title: "基于人工智能的超市捡货机器人",
-    description: "广东省电子设计大赛项目。负责模型训练和上位机开发，使用百度飞桨平台训练模型并部署到PC端，通过TCP协议进行通信，实现图像识别和指令传输。",
-    image: "/images/projects/shopping-robot.jpg",
-    category: "algorithm",
-    technologies: ["Python", "百度飞桨", "TCP通信", "计算机视觉", "嵌入式"],
+    title: "金属3D打印机MES制造执行系统",
+    description: "用于管理多台SLM金属3D打印机的工业级制造执行系统。实现设备实时监控、任务调度管理、生产数据分析和材料库存管理，采用前后端分离架构，支持Docker容器化部署。",
+    image: "/images/projects/mes/mes-dashboard.jpg",
+    topImage: "/images/projects/mes/mes-top.jpg",
+    category: "tool",
+    technologies: ["Next.js 14", "TypeScript", "Python", "FastAPI", "PostgreSQL", "Redis", "Socket.io", "Docker"],
     demo: "#",
-    featured: false,
-    createdAt: "2021-05-01"
+    featured: true,
+    createdAt: "2024-01-01"
   }
 ]
 

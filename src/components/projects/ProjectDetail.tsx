@@ -137,40 +137,43 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         skills: ["C++", "OpenGL", "3D渲染", "几何计算", "物理仿真", "Qt", "数据格式转换"]
       },
       3: {
-        fullDescription: "基于VR技术的机械臂轨迹规划系统，手持设备在空间中移动，通过电脑软件对移动的轨迹进行编辑，然后让机械臂复现设备记录的轨迹。适用于机械臂打磨、电子产品组装等工业应用场景。",
+        fullDescription: "基于VR外向内追踪技术的机械臂轨迹规划系统，采用前后端分离架构。手持HTC Vive Tracker在空间中移动，系统实时记录轨迹并在MuJoCo物理引擎中进行可视化和编辑，最终让机械臂精确复现设备记录的轨迹。适用于机械臂打磨、电子产品组装和医疗理疗机器人等场景。",
         challenges: [
-          "VR设备二次开发：使用HTC Vive Tracker和OpenVR库实现精确位置捕获",
-          "轨迹编辑：开发人机交互界面（Qt）实现轨迹的可视化和编辑",
-          "网络通信：通过TCP协议实现前后端分离",
-          "3D可视化：使用OpenGL实现轨迹的虚拟呈现",
-          "传感器集成：集成压力传感器进行交互控制"
+          "VR设备定位精度：HTC Vive Tracker的原始数据存在抖动和漂移，影响轨迹记录的准确性",
+          "高频数据传输：VR追踪器产生高频位置数据（30Hz），需要低延迟的传输方案",
+          "系统架构设计：VR设备、Web前端、Python后端、机械臂控制器之间需要高效的数据传输和同步",
+          "实时物理仿真：需要在MuJoCo中实时渲染机械臂运动并进行碰撞检测",
+          "多厂商机械臂适配：需要支持不同品牌机械臂的控制协议和运动学模型"
         ],
         solutions: [
-          "使用OpenVR SDK进行VR设备开发",
-          "开发Qt界面实现轨迹规划和编辑功能",
-          "采用OpenGL进行实时3D渲染",
-          "通过TCP实现模块化系统架构"
+          "使用卡尔曼滤波算法对VR设备的位置数据进行平滑处理，消除抖动和漂移，提高轨迹精度",
+          "采用WebSocket + RESTful API混合通信架构：WebSocket负责传输高频VR追踪数据，RESTful API负责基础CRUD操作",
+          "前端使用TypeScript构建Web界面，后端使用Python处理数据和控制逻辑，实现前后端完全分离",
+          "集成MuJoCo物理引擎进行机械臂运动仿真和轨迹可视化，支持实时预览和碰撞检测",
+          "集成ESP32处理力传感器数据，通过蓝牙传输握持力度信号，控制轨迹记录的启停"
         ],
         outcomes: [
-          "完整的VR轨迹规划系统",
-          "实现了机械臂的精确轨迹复现",
-          "应用于工业打磨和组装场景"
+          "完整的前后端分离VR轨迹规划系统",
+          "成功测试三种不同厂商机械臂的轨迹复现",
+          "应用于工业打磨、组装和医疗理疗场景"
         ],
-        skills: ["C++", "Qt", "OpenVR", "OpenGL", "TCP通信", "VR开发", "传感器集成"]
+        skills: ["Python", "TypeScript", "MuJoCo", "OpenVR", "WebSocket", "RESTful API", "卡尔曼滤波", "ESP32", "蓝牙通信"]
       },
       4: {
         fullDescription: "低成本低负载的五轴机械臂控制系统。实现了完整的正运动学和逆运动学算法，配备人机交互界面，支持轨迹规划和实时控制。",
         challenges: [
-          "运动学算法：开发正运动学和逆运动学算法",
-          "轨迹规划：实现平滑的路径规划算法",
-          "实时控制：确保控制指令的实时性",
-          "人机交互：开发直观的控制界面"
+          "逆运动学求解：五轴机械臂存在多解问题，需要选择最优解并避免奇异位形",
+          "轨迹平滑性：离散的目标点需要生成连续平滑的运动轨迹，避免机械冲击",
+          "实时性保证：控制指令的计算和传输必须满足实时性要求，延迟不能超过50ms",
+          "成本控制：在低成本硬件平台上实现高精度控制，减少传感器和执行器成本",
+          "用户体验：需要让非专业用户也能轻松操作机械臂"
         ],
         solutions: [
-          "实现D-H参数法的运动学建模",
-          "采用样条插值进行轨迹平滑",
-          "使用嵌入式系统实现实时控制",
-          "开发Qt界面进行可视化控制"
+          "采用D-H参数法建立运动学模型，使用几何法和雅可比矩阵求解逆解，通过关节角度约束筛选最优解",
+          "使用三次样条插值算法生成平滑轨迹，确保速度和加速度连续",
+          "在嵌入式系统中实现实时控制循环，优化算法性能，确保指令响应及时",
+          "通过算法优化替代昂贵的传感器，降低硬件成本的同时保证控制精度",
+          "开发Qt可视化界面，提供示教、拖拽控制等多种操作模式"
         ],
         outcomes: [
           "完整的五轴机械臂控制系统",
@@ -182,16 +185,18 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       5: {
         fullDescription: "第十六届全国大学生智能车竞赛全国一等奖项目。开发了高效的车道线识别算法，在硬件性能固定的情况下大大提高识别速度，使车辆行驶速度最快。算法适应性强，对不同光照条件都有高识别率。",
         challenges: [
-          "性能优化：在有限硬件资源下提升识别速度",
-          "光照适应：应对不同光照条件下的识别准确率",
-          "实时性要求：确保算法满足实时控制需求",
-          "模型训练：训练和部署Ultra-Fast-Lane-Detection-V2模型"
+          "硬件资源受限：比赛规定的嵌入式平台计算能力有限，深度学习模型难以实时运行",
+          "光照环境多变：赛道存在强光、阴影、反光等复杂光照条件，影响车道线识别准确率",
+          "实时性与准确性平衡：需要在保证识别准确率的同时最大化车速，延迟必须控制在100ms内",
+          "模型优化困难：Ultra-Fast-Lane-Detection-V2模型较重，需要在不影响精度的前提下压缩模型",
+          "控制策略调优：识别结果需要转化为精确的转向控制，PID参数调优工作量大"
         ],
         solutions: [
-          "优化算法流程，减少不必要的计算",
-          "采用自适应图像处理技术",
-          "使用深度学习模型进行识别",
-          "在上位机和下位机之间建立高效通信协议"
+          "在上位机运行深度学习模型，通过TCP协议将识别结果实时传输给下位机，分离计算和控制任务",
+          "采用自适应直方图均衡化和Gamma校正技术预处理图像，增强算法对不同光照的鲁棒性",
+          "优化模型推理流程，裁剪冗余层，使用TensorRT加速推理，将单帧处理时间降至50ms",
+          "对Ultra-Fast-Lane-Detection-V2进行知识蒸馏和量化，在精度损失<2%的情况下减小模型50%",
+          "采用分段PID控制策略，根据曲率自适应调整参数，提升弯道表现"
         ],
         outcomes: [
           "获得全国一等奖（20/565）",
@@ -201,25 +206,27 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         skills: ["C++", "Python", "计算机视觉", "深度学习", "Ultra-Fast-Lane-Detection", "图像处理", "TCP通信"]
       },
       6: {
-        fullDescription: "广东省电子设计大赛项目。负责模型训练和上位机开发，使用百度飞桨平台训练模型并部署到PC端，通过TCP协议进行通信，实现图像识别和指令传输。",
+        fullDescription: "一个用于管理多台SLM（选择性激光熔化）金属3D打印机的工业级制造执行系统。采用现代化的前后端分离架构，实现设备实时监控、生产任务调度、数据统计分析和材料库存管理等核心功能。系统支持实时数据推送、多设备并发管理，并通过Docker容器化实现快速部署。适用于金属增材制造车间的数字化管理需求。",
         challenges: [
-          "模型训练：在百度飞桨平台训练目标检测模型",
-          "模型部署：将训练好的模型部署到PC端",
-          "通信协议：实现上位机与下位机的数据传输",
-          "实时性：保证识别和控制的实时性"
+          "多设备实时监控：需要同时监控多台打印机的关键参数（氧含量、仓压力、风机频率、过滤压差）并实时展示",
+          "高频数据处理：设备传感器产生高频数据流，需要高效的数据采集、处理和存储方案",
+          "系统可扩展性：需要支持不同型号打印机的接入，并允许用户自定义材料类型和工艺参数",
+          "前后端通信：实时数据推送、RESTful API调用、数据库事务处理需要统一的通信架构",
+          "生产数据分析：需要实现OEE（设备综合效率）计算、产量统计、材料消耗分析等复杂业务逻辑"
         ],
         solutions: [
-          "使用百度飞桨进行模型训练和优化",
-          "开发上位机软件处理图像和控制逻辑",
-          "采用TCP协议实现可靠通信",
-          "使用串口向下位机发送控制指令"
+          "采用Socket.io实现WebSocket双向通信，设备状态变化实时推送到前端，延迟<100ms",
+          "使用Redis作为消息队列和缓存层，Celery处理异步任务，PostgreSQL持久化存储历史数据",
+          "设计灵活的数据模型和配置系统，支持自定义材料参数（CoCr、Ti系列等），可动态添加新设备",
+          "采用FastAPI + Next.js 14的前后端分离架构，RESTful API处理CRUD操作，WebSocket负责实时数据",
+          "集成Recharts图表库，实现生产趋势可视化、设备利用率分析、材料消耗统计等数据看板"
         ],
         outcomes: [
-          "成功实现超市货物的自动识别",
-          "机器人能够准确定位和抓取目标",
-          "获得省级比赛奖项"
+          "完整的工业级MES系统，支持多设备管理",
+          "实现设备状态实时监控和告警推送",
+          "Docker容器化部署，开发环境5分钟内启动"
         ],
-        skills: ["Python", "百度飞桨", "计算机视觉", "TCP通信", "串口通信", "目标检测"]
+        skills: ["Next.js 14", "TypeScript", "Python", "FastAPI", "PostgreSQL", "Redis", "Socket.io", "Docker", "Celery", "TanStack Query"]
       }
     }
     
@@ -797,6 +804,504 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     以上为使用本设计软件配合专用弯丝机制作的实际弓丝成品
                   </motion.p>
                 </motion.div>
+              )}
+
+              {/* 项目3：轨迹追踪系统硬件与测试展示 */}
+              {project.id === 3 && (
+                <>
+                  {/* 硬件组成展示 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.7 }}
+                    className="bg-white rounded-2xl p-8 shadow-sm"
+                  >
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                      <CheckCircle2 className="w-6 h-6 mr-2 text-primary-600" />
+                      硬件系统组成
+                    </h2>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.8 }}
+                        className="relative rounded-xl overflow-hidden shadow-lg group"
+                      >
+                        <div className="relative h-80">
+                          <Image
+                            src="/images/projects/tracker/hardware_composition.jpg"
+                            alt="追踪头硬件组成"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <div className="text-white p-4">
+                            <p className="font-semibold mb-1">追踪头硬件组成</p>
+                            <p className="text-sm">HTC Vive Tracker、ESP32微控制器、力传感器、蓝牙模块</p>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.9 }}
+                        className="relative rounded-xl overflow-hidden shadow-lg group"
+                      >
+                        <div className="relative h-80">
+                          <Image
+                            src="/images/projects/tracker/hardware_composition2.jpg"
+                            alt="HTC Vive Tracker架设方式"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <div className="text-white p-4">
+                            <p className="font-semibold mb-1">追踪器架设方式</p>
+                            <p className="text-sm">HTC Vive基站的空间布局和追踪覆盖范围展示</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.0 }}
+                      className="mt-6 text-gray-600 text-sm leading-relaxed"
+                    >
+                      <span className="font-semibold">硬件说明：</span>
+                      HTC Vive Tracker提供亚毫米级的空间定位精度，ESP32负责实时采集和处理力传感器数据，
+                      通过蓝牙模块将握持力度信号传输至电脑，实现无线便捷的轨迹记录启停控制。
+                    </motion.p>
+                  </motion.div>
+
+                  {/* 卡尔曼滤波效果展示 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1 }}
+                    className="bg-white rounded-2xl p-8 shadow-sm"
+                  >
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                      <CheckCircle2 className="w-6 h-6 mr-2 text-primary-600" />
+                      卡尔曼滤波算法效果
+                    </h2>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 1.2 }}
+                      className="relative rounded-xl overflow-hidden shadow-lg group"
+                    >
+                      <div className="relative h-96">
+                        <Image
+                          src="/images/projects/tracker/filter_effect.jpg"
+                          alt="卡尔曼滤波前后对比"
+                          fill
+                          className="object-contain bg-gray-50 group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div className="text-white p-4">
+                          <p className="font-semibold mb-1">滤波效果对比</p>
+                          <p className="text-sm">左侧为原始轨迹数据，右侧为经过卡尔曼滤波后的平滑轨迹</p>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.3 }}
+                      className="mt-6 text-gray-600 text-sm leading-relaxed"
+                    >
+                      <span className="font-semibold">技术说明：</span>
+                      HTC Vive Tracker的原始数据存在抖动和漂移，通过卡尔曼滤波算法可以有效消除噪声，
+                      提高轨迹记录精度，使机械臂能够更准确地复现操作者的意图。
+                    </motion.p>
+                  </motion.div>
+
+                  {/* 机械臂测试展示 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.4 }}
+                    className="bg-white rounded-2xl p-8 shadow-sm"
+                  >
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                      <CheckCircle2 className="w-6 h-6 mr-2 text-primary-600" />
+                      多厂商机械臂适配测试
+                    </h2>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 1.5 }}
+                        className="relative rounded-xl overflow-hidden shadow-lg group"
+                      >
+                        <div className="relative h-80">
+                          <Image
+                            src="/images/projects/tracker/robot_arm_test.jpg"
+                            alt="机械臂测试1"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <div className="text-white p-4">
+                            <p className="font-semibold">厂商A机械臂测试</p>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 1.6 }}
+                        className="relative rounded-xl overflow-hidden shadow-lg group"
+                      >
+                        <div className="relative h-80">
+                          <Image
+                            src="/images/projects/tracker/robot_arm_test2.jpg"
+                            alt="机械臂测试2"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <div className="text-white p-4">
+                            <p className="font-semibold">厂商B机械臂测试</p>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 1.7 }}
+                        className="relative rounded-xl overflow-hidden shadow-lg group"
+                      >
+                        <div className="relative h-80">
+                          <Image
+                            src="/images/projects/tracker/robot_arm_test3.jpg"
+                            alt="机械臂测试3"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <div className="text-white p-4">
+                            <p className="font-semibold">厂商C机械臂测试</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.8 }}
+                      className="mt-6 text-gray-600 text-sm leading-relaxed"
+                    >
+                      <span className="font-semibold">测试成果：</span>
+                      系统成功适配三种不同厂商的工业机械臂，实现了轨迹的精确复现。
+                      通过标准化的控制接口和运动学模型，确保系统具有良好的通用性和扩展性。
+                    </motion.p>
+                  </motion.div>
+
+                  {/* 医疗应用场景展示 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.9 }}
+                    className="bg-white rounded-2xl p-8 shadow-sm"
+                  >
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                      <CheckCircle2 className="w-6 h-6 mr-2 text-primary-600" />
+                      医疗理疗应用场景
+                    </h2>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 2.0 }}
+                      className="relative rounded-xl overflow-hidden shadow-lg group"
+                    >
+                      <div className="relative h-96">
+                        <Image
+                          src="/images/projects/tracker/physiotherapy_usage_scenarios.jpg"
+                          alt="理疗机器人应用场景"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div className="text-white p-4">
+                          <p className="font-semibold mb-1">理疗机器人实际应用</p>
+                          <p className="text-sm">轨迹追踪系统在医疗康复理疗场景中的实际部署和使用</p>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 2.1 }}
+                      className="mt-6 text-gray-600 text-sm leading-relaxed"
+                    >
+                      <span className="font-semibold">应用场景：</span>
+                      除了工业制造领域，本系统还成功应用于医疗康复理疗场景。
+                      理疗师可以通过手持追踪设备记录最佳的理疗手法和力度，
+                      系统记录下完整的三维轨迹和力反馈数据，然后由机械臂精确复现，
+                      确保每位患者都能获得标准化、高质量的理疗服务。
+                    </motion.p>
+                  </motion.div>
+                </>
+              )}
+
+              {/* 项目6：MES系统功能展示 */}
+              {project.id === 6 && (
+                <>
+                  {/* 系统架构展示 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.7 }}
+                    className="bg-white rounded-2xl p-8 shadow-sm"
+                  >
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                      <CheckCircle2 className="w-6 h-6 mr-2 text-primary-600" />
+                      系统架构设计
+                    </h2>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 0.8 }}
+                      className="relative rounded-xl overflow-hidden shadow-lg group"
+                    >
+                      <div className="relative h-96">
+                        <Image
+                          src="/images/projects/mes/architecture.jpg"
+                          alt="MES系统架构图"
+                          fill
+                          className="object-contain bg-gray-50 group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div className="text-white p-4">
+                          <p className="font-semibold mb-1">前后端分离架构</p>
+                          <p className="text-sm">Next.js 14前端 + FastAPI后端 + PostgreSQL/Redis数据层</p>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.9 }}
+                      className="mt-6 text-gray-600 text-sm leading-relaxed"
+                    >
+                      <span className="font-semibold">架构说明：</span>
+                      采用现代化的前后端分离架构，前端使用Next.js 14 + TypeScript实现响应式Web界面，
+                      后端使用FastAPI构建高性能RESTful API，PostgreSQL存储业务数据，Redis处理缓存和消息队列，
+                      Socket.io实现设备状态的实时推送，Celery处理异步任务调度。
+                    </motion.p>
+                  </motion.div>
+
+                  {/* 核心功能模块展示 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.0 }}
+                    className="bg-white rounded-2xl p-8 shadow-sm"
+                  >
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                      <CheckCircle2 className="w-6 h-6 mr-2 text-primary-600" />
+                      核心功能模块
+                    </h2>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 1.1 }}
+                        className="relative rounded-xl overflow-hidden shadow-lg group"
+                      >
+                        <div className="relative h-80">
+                          <Image
+                            src="/images/projects/mes/device-monitor.jpg"
+                            alt="设备监控页面"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <div className="text-white p-4">
+                            <p className="font-semibold mb-1">设备实时监控</p>
+                            <p className="text-sm">监控打印机氧含量、仓压力、风机频率、过滤压差等关键参数</p>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 1.2 }}
+                        className="relative rounded-xl overflow-hidden shadow-lg group"
+                      >
+                        <div className="relative h-80">
+                          <Image
+                            src="/images/projects/mes/task-management.jpg"
+                            alt="任务管理页面"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <div className="text-white p-4">
+                            <p className="font-semibold mb-1">任务调度管理</p>
+                            <p className="text-sm">打印任务分配、队列管理、执行状态追踪</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.3 }}
+                      className="mt-6 text-gray-600 text-sm leading-relaxed"
+                    >
+                      <span className="font-semibold">功能特点：</span>
+                      系统提供设备实时监控、任务调度管理、生产数据分析和材料库存管理四大核心模块。
+                      设备监控模块通过WebSocket实时推送设备状态，延迟小于100ms；
+                      任务管理模块支持打印任务的创建、分配、队列管理和执行追踪。
+                    </motion.p>
+                  </motion.div>
+
+                  {/* 数据可视化与分析 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.4 }}
+                    className="bg-white rounded-2xl p-8 shadow-sm"
+                  >
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                      <CheckCircle2 className="w-6 h-6 mr-2 text-primary-600" />
+                      生产数据可视化
+                    </h2>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 1.5 }}
+                        className="relative rounded-xl overflow-hidden shadow-lg group"
+                      >
+                        <div className="relative h-80">
+                          <Image
+                            src="/images/projects/mes/production-data.jpg"
+                            alt="生产数据统计"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <div className="text-white p-4">
+                            <p className="font-semibold mb-1">生产数据统计</p>
+                            <p className="text-sm">产量趋势、设备利用率、OEE分析</p>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 1.6 }}
+                        className="relative rounded-xl overflow-hidden shadow-lg group"
+                      >
+                        <div className="relative h-80">
+                          <Image
+                            src="/images/projects/mes/material-management.jpg"
+                            alt="材料管理页面"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                          <div className="text-white p-4">
+                            <p className="font-semibold mb-1">材料库存管理</p>
+                            <p className="text-sm">CoCr、Ti系列材料管理，支持自定义材料类型</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.7 }}
+                      className="mt-6 text-gray-600 text-sm leading-relaxed"
+                    >
+                      <span className="font-semibold">数据分析：</span>
+                      集成Recharts图表库实现生产数据的可视化展示，包括产量趋势分析、设备综合效率（OEE）计算、
+                      材料消耗统计等。支持时间维度的数据筛选，帮助管理者快速了解生产状况并做出决策。
+                    </motion.p>
+                  </motion.div>
+
+                  {/* Docker容器化部署 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.8 }}
+                    className="bg-white rounded-2xl p-8 shadow-sm"
+                  >
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                      <CheckCircle2 className="w-6 h-6 mr-2 text-primary-600" />
+                      容器化部署方案
+                    </h2>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 1.9 }}
+                      className="relative rounded-xl overflow-hidden shadow-lg group"
+                    >
+                      <div className="relative h-96">
+                        <Image
+                          src="/images/projects/mes/docker-deployment.jpg"
+                          alt="Docker部署架构"
+                          fill
+                          className="object-contain bg-gray-50 group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div className="text-white p-4">
+                          <p className="font-semibold mb-1">Docker Compose编排</p>
+                          <p className="text-sm">前端、后端、数据库、Redis多容器协同部署</p>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 2.0 }}
+                      className="mt-6 text-gray-600 text-sm leading-relaxed"
+                    >
+                      <span className="font-semibold">部署优势：</span>
+                      采用Docker容器化技术实现一键部署，通过docker-compose.yml编排前端、后端、PostgreSQL、Redis等多个服务。
+                      开发环境可在5分钟内完成初始化，生产环境支持灵活的扩展和负载均衡配置。
+                      所有服务配置标准化，降低运维成本，提高系统可移植性。
+                    </motion.p>
+                  </motion.div>
+                </>
               )}
             </div>
 
