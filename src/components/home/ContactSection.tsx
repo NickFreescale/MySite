@@ -1,30 +1,22 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, MessageCircle, Github, MapPin, Phone } from 'lucide-react'
+import { Mail, MessageCircle, MapPin, Phone } from 'lucide-react'
 
 const contactMethods = [
   {
     icon: Mail,
     title: '邮箱联系',
     description: '商务合作或技术交流',
-    contact: 'your.email@example.com',
-    href: 'mailto:your.email@example.com',
+    contact: '19854814168@163.com',
+    href: 'mailto:19854814168@163.com',
     color: 'from-blue-500 to-cyan-500'
-  },
-  {
-    icon: Github,
-    title: 'GitHub',
-    description: '查看我的开源项目',
-    contact: '@yourusername',
-    href: 'https://github.com/yourusername',
-    color: 'from-gray-700 to-gray-900'
   },
   {
     icon: MessageCircle,
     title: '微信',
     description: '扫码添加微信好友',
-    contact: 'your-wechat-id',
+    contact: '19854814168',
     href: '#',
     color: 'from-green-500 to-emerald-500'
   }

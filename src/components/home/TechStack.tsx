@@ -47,14 +47,14 @@ const secondarySkillsData = {
     { name: "人工智能", icon: "🤖" },
     { name: "嵌入式开发", icon: "🔌" },
     { name: "Android", icon: "📱" },
-    { name: "PCB设计", icon: "🔧" }
+    { name: "Web开发", icon: "🌐" }
   ],
   en: [
     { name: "Python", icon: "🐍" },
     { name: "AI", icon: "🤖" },
     { name: "Embedded Dev", icon: "🔌" },
     { name: "Android", icon: "📱" },
-    { name: "PCB Design", icon: "🔧" }
+    { name: "Web Development", icon: "🌐" }
   ]
 }
 

@@ -36,11 +36,11 @@ export default function AboutHero() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               <div className="flex items-center space-x-3 text-gray-600">
                 <MapPin className="w-5 h-5 text-primary-600" />
-                <span>北京，中国</span>
+                <span>广州，中国</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Calendar className="w-5 h-5 text-primary-600" />
-                <span>2+ 年经验</span>
+                <span>3+ 年经验</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Coffee className="w-5 h-5 text-primary-600" />
@@ -84,15 +84,11 @@ export default function AboutHero() {
               
               {/* 头像容器 */}
               <div className="absolute inset-2 bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-2xl">
-                {/* 如果有真实照片，替换这部分为 <img src="/images/profile.jpg" alt="个人照片" /> */}
-                <div className="w-full h-full bg-gradient-to-br from-primary-100 to-blue-100 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 bg-gradient-to-br from-primary-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-5xl font-bold text-white">{siteConfig.name[0]}</span>
-                    </div>
-                    <p className="text-gray-600 text-sm">添加个人照片：<br/>/public/images/profile.jpg</p>
-                  </div>
-                </div>
+                <img 
+                  src="/images/profile.jpg" 
+                  alt="个人照片" 
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* 装饰元素 - 技能图标 */}
@@ -114,23 +110,19 @@ export default function AboutHero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-8"
         >
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">15+</div>
+            <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">6+</div>
             <div className="text-gray-600">完成项目</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">25+</div>
-            <div className="text-gray-600">算法讲解</div>
+            <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">3+</div>
+            <div className="text-gray-600">年开发经验</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">8+</div>
-            <div className="text-gray-600">技术栈</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">100+</div>
-            <div className="text-gray-600">GitHub提交</div>
+            <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">3+</div>
+            <div className="text-gray-600">竞赛获奖</div>
           </div>
         </motion.div>
       </div>

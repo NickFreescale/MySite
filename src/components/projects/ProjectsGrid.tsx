@@ -70,6 +70,7 @@ export default function ProjectsGrid() {
               <span className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full font-medium">
                 {project.category === 'algorithm' && '算法项目'}
                 {project.category === 'tool' && '工具软件'}
+                {project.category === 'competition' && '竞赛项目'}
               </span>
               {project.featured && (
                 <div className="flex items-center space-x-1 text-yellow-600 text-sm">

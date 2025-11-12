@@ -9,7 +9,7 @@ export const siteConfig = {
   // 联系方式
   email: "19854814168@163.com", 
   linkedin: "", 
-  wechat: "your-wechat-id", 
+  wechat: "19854814168", 
   
   // 网站信息
   url: "https://nickfreescale-mysite.vercel.app", 
@@ -31,7 +31,7 @@ export type Project = {
   image: string // 首页使用的图片
   detailImage?: string // 可选：项目详情页和项目列表页使用的图片，如果不设置则使用 image
   topImage?: string // 可选：项目详情页顶部横幅图片
-  category: 'algorithm' | 'tool'
+  category: 'algorithm' | 'tool' | 'competition'
   technologies: string[]
   demo: string
   featured: boolean
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     technologies: ["C++", "OpenGL", "3D渲染", "几何计算", "物理仿真"],
     demo: "#",
     featured: true,
-    createdAt: "2023-06-01",
+    createdAt: "2024-06-01",
     status: "in-progress"
   },
   {
@@ -81,29 +81,7 @@ export const projects: Project[] = [
     technologies: ["Python", "TypeScript", "MuJoCo", "OpenVR", "WebSocket", "RESTful API", "卡尔曼滤波"],
     demo: "#",
     featured: true,
-    createdAt: "2022-03-01"
-  },
-  {
-    id: 4,
-    title: "五轴机械臂控制系统",
-    description: "低成本低负载的五轴机械臂控制系统。实现了完整的正运动学和逆运动学算法，配备人机交互界面，支持轨迹规划和实时控制。",
-    image: "/images/projects/five-axis-arm.jpg",
-    category: "tool",
-    technologies: ["C++", "Qt", "运动学算法", "嵌入式开发", "控制算法"],
-    demo: "#",
-    featured: false,
-    createdAt: "2022-01-01"
-  },
-  {
-    id: 5,
-    title: "全国大学生智能车竞赛 - 车道线识别系统",
-    description: "第十六届全国大学生智能车竞赛全国一等奖项目。开发了高效的车道线识别算法，在硬件性能固定的情况下大大提高识别速度，使车辆行驶速度最快。算法适应性强，对不同光照条件都有高识别率。",
-    image: "/images/projects/smart-car-lane.jpg",
-    category: "algorithm",
-    technologies: ["C++", "Python", "计算机视觉", "AI算法", "Ultra-Fast-Lane-Detection"],
-    demo: "#",
-    featured: false,
-    createdAt: "2021-08-01"
+    createdAt: "2023-03-01"
   },
   {
     id: 6,
@@ -114,7 +92,31 @@ export const projects: Project[] = [
     category: "tool",
     technologies: ["Next.js 14", "TypeScript", "Python", "FastAPI", "PostgreSQL", "Redis", "Socket.io", "Docker"],
     demo: "#",
-    featured: true,
+    featured: false,
+    createdAt: "2024-01-01"
+  },
+  {
+    id: 5,
+    title: "全国大学生智能车竞赛 - 车道线识别系统",
+    description: "第十六届全国大学生智能车竞赛全国一等奖项目。使用OpenCV开发车道线识别算法，通过颜色空间转换和形态学处理实现高效稳定的车道检测。算法适应性强，对不同光照条件都有高识别率。",
+    image: "/images/projects/smartCar/home_page.jpg",
+    topImage: "/images/projects/smartCar/home_page.jpg",
+    category: "competition",
+    technologies: ["C++", "Python", "OpenCV", "计算机视觉", "百度飞桨", "YOLO"],
+    demo: "#",
+    featured: false,
+    createdAt: "2021-08-01"
+  },
+  {
+    id: 4,
+    title: "To Be Continued...",
+    description: "更多精彩项目正在路上，敬请期待 ✨",
+    image: "/images/projects/To_be_continue.jpg",
+    topImage: "/images/projects/tobecontinue/snoopy.gif",
+    category: "tool",
+    technologies: ["Coming Soon"],
+    demo: "#",
+    featured: false,
     createdAt: "2024-01-01"
   }
 ]
@@ -123,17 +125,13 @@ export const projects: Project[] = [
 export const algorithms = [
   {
     id: 1,
-    title: "车道线识别算法优化",
-    description: "基于Ultra-Fast-Lane-Detection-V2模型的车道线识别算法。通过算法优化大大提高识别速度，增强对不同光照条件的适应性，在智能车竞赛中取得优异成绩。",
+    title: "基于OpenCV的车道线识别算法",
+    description: "使用OpenCV实现的车道线识别算法。通过颜色空间转换（RGB→HSV）、阈值提取、形态学处理等步骤，实现高效稳定的车道检测。增强对不同光照条件的适应性，在智能车竞赛中取得优异成绩。",
     category: "algorithm",
-    difficulty: "困难",
-    readTime: "15 分钟",
+    difficulty: "中等",
+    readTime: "12 分钟",
     publishDate: "2021-08-01",
-    tags: ["计算机视觉", "深度学习", "图像处理"],
-    complexity: {
-      time: "O(n)",
-      space: "O(1)"
-    }
+    tags: ["计算机视觉", "OpenCV", "图像处理"]
   },
   {
     id: 2,
@@ -143,11 +141,7 @@ export const algorithms = [
     difficulty: "中等",
     readTime: "12 分钟",
     publishDate: "2022-08-01",
-    tags: ["控制算法", "PID", "自动控制"],
-    complexity: {
-      time: "O(1)",
-      space: "O(1)"
-    }
+    tags: ["控制算法", "PID", "自动控制"]
   },
   {
     id: 3,
@@ -157,11 +151,7 @@ export const algorithms = [
     difficulty: "困难",
     readTime: "20 分钟",
     publishDate: "2022-03-01",
-    tags: ["机器人学", "运动学", "轨迹规划"],
-    complexity: {
-      time: "O(n)",
-      space: "O(n)"
-    }
+    tags: ["机器人学", "运动学", "轨迹规划"]
   },
   {
     id: 4,
@@ -171,11 +161,7 @@ export const algorithms = [
     difficulty: "困难",
     readTime: "18 分钟",
     publishDate: "2023-01-01",
-    tags: ["计算几何", "3D打印", "图形学"],
-    complexity: {
-      time: "O(n log n)",
-      space: "O(n)"
-    }
+    tags: ["计算几何", "3D打印", "图形学"]
   }
 ]
 
@@ -255,7 +241,7 @@ export const timeline = [
     organization: "中国自动化学会",
     location: "全国",
     period: "2020.08 - 2021.08",
-    description: "担任上位机算法工程师，负责车道线识别算法开发。采用Ultra-Fast-Lane-Detection-V2模型，大大提高识别速度和适应性，获得全国一等奖（20/565）。"
+    description: "担任上位机算法工程师，负责车道线识别算法开发。使用OpenCV通过颜色空间转换和形态学处理实现高效稳定的车道检测，获得全国一等奖（20/565）。"
   },
   {
     id: 3,

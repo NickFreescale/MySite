@@ -45,7 +45,7 @@ export default function ProjectsHero() {
         >
           从创意到实现，每一个项目都承载着我的技术探索和创新思考。
           <br />
-          涵盖Web应用、移动开发、算法可视化等多个领域。
+          涵盖CAD软件开发、Web应用开发、机械臂轨迹规划等多个领域。
         </motion.p>
 
         {/* 统计数据 */}
@@ -60,7 +60,7 @@ export default function ProjectsHero() {
               <Code className="w-5 h-5 text-primary-600" />
             </div>
             <div>
-              <div className="text-2xl font-bold text-gray-900">15+</div>
+              <div className="text-2xl font-bold text-gray-900">6+</div>
               <div className="text-sm text-gray-600">完成项目</div>
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function ProjectsHero() {
               <Zap className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <div className="text-2xl font-bold text-gray-900">8+</div>
+              <div className="text-2xl font-bold text-gray-900">5+</div>
               <div className="text-sm text-gray-600">技术栈</div>
             </div>
           </div>
@@ -80,8 +80,8 @@ export default function ProjectsHero() {
               <FolderOpen className="w-5 h-5 text-purple-600" />
             </div>
             <div>
-              <div className="text-2xl font-bold text-gray-900">5+</div>
-              <div className="text-sm text-gray-600">开源项目</div>
+              <div className="text-2xl font-bold text-gray-900">3+</div>
+              <div className="text-sm text-gray-600">竞赛获奖</div>
             </div>
           </div>
         </motion.div>

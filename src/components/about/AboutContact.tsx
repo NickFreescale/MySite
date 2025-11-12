@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { 
   Mail, 
-  Github, 
   MessageCircle, 
   ArrowRight,
   Download,
@@ -15,23 +14,15 @@ const contactMethods = [
   {
     icon: Mail,
     title: '邮箱',
-    value: 'your.email@example.com',
-    href: 'mailto:your.email@example.com',
+    value: '19854814168@163.com',
+    href: 'mailto:19854814168@163.com',
     description: '商务合作或技术交流',
     color: 'from-blue-500 to-cyan-500'
   },
   {
-    icon: Github,
-    title: 'GitHub',
-    value: '@yourusername',
-    href: 'https://github.com/yourusername',
-    description: '查看我的开源项目',
-    color: 'from-gray-700 to-gray-900'
-  },
-  {
     icon: MessageCircle,
     title: '微信',
-    value: 'your-wechat-id',
+    value: '19854814168',
     href: '#',
     description: '扫码添加微信好友',
     color: 'from-green-500 to-emerald-500'
@@ -268,7 +259,7 @@ export default function AboutContact() {
               我都很乐意为你提供专业的帮助。让我们一起创造些精彩的东西！
             </p>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:19854814168@163.com"
               className="inline-flex items-center space-x-2 bg-white text-primary-600 px-8 py-3 rounded-lg font-medium hover:bg-primary-50 transition-colors"
             >
               <Mail className="w-5 h-5" />

@@ -95,22 +95,6 @@ export default function AlgorithmsGrid() {
                 {algorithm.description}
               </p>
 
-              {/* 复杂度信息 */}
-              <div className="flex items-center space-x-4 mb-4 text-xs">
-                <div className="flex items-center space-x-1">
-                  <span className="text-gray-500">时间:</span>
-                  <code className="bg-gray-100 px-2 py-1 rounded text-gray-700">
-                    {algorithm.complexity.time}
-                  </code>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <span className="text-gray-500">空间:</span>
-                  <code className="bg-gray-100 px-2 py-1 rounded text-gray-700">
-                    {algorithm.complexity.space}
-                  </code>
-                </div>
-              </div>
-
               {/* 标签 */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {algorithm.tags.map((tag) => (

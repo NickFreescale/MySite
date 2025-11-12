@@ -9,15 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "framer-motion": "^10.16.16",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.294.0",
     "next": "14.0.4",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "framer-motion": "^10.16.16",
-    "lucide-react": "^0.294.0",
-    "gray-matter": "^4.0.3",
+    "react-drawio": "^1.0.7",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1",
-    "prismjs": "^1.29.0"
+    "remark-html": "^16.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
@@ -31,5 +32,3 @@
     "typescript": "^5.3.3"
   }
 }
-
-
