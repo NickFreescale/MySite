@@ -124,7 +124,28 @@ export const projects: Project[] = [
 // 算法教程数据
 export const algorithms = [
   {
+    id: 0,
+    title: "OpenGL渲染引擎",
+    description: "基于Qt框架开发的OpenGL渲染引擎，实现三维模型的增删改查、选取、平移旋转、相机移动以及多种渲染效果的切换。支持高性能的3D可视化和实时交互。",
+    category: "geometry",
+    difficulty: "困难",
+    readTime: "15 分钟",
+    publishDate: "2024-01-01",
+    tags: ["OpenGL", "Qt", "3D渲染", "图形学"]
+  },
+  {
     id: 1,
+    title: "不规则多边形的自动排版问题",
+    description: "针对3D打印和制造业中的自动排版需求，研究不规则多边形的智能布局算法。通过遗传算法、碰撞检测和旋转优化，实现高效的空间利用率和最优排布方案。",
+    category: "geometry",
+    difficulty: "困难",
+    readTime: "20 分钟",
+    publishDate: "2024-05-01",
+    tags: ["计算几何", "遗传算法", "自动排版", "碰撞检测"],
+    contentFile: "images/algorithms/nesting/二维不规则多边形自动排版报告 copy.md"  // Markdown文件路径（相对于public目录）
+  },
+  {
+    id: 2,
     title: "基于OpenCV的车道线识别算法",
     description: "使用OpenCV实现的车道线识别算法。通过颜色空间转换（RGB→HSV）、阈值提取、形态学处理等步骤，实现高效稳定的车道检测。增强对不同光照条件的适应性，在智能车竞赛中取得优异成绩。",
     category: "algorithm",
@@ -134,7 +155,7 @@ export const algorithms = [
     tags: ["计算机视觉", "OpenCV", "图像处理"]
   },
   {
-    id: 2,
+    id: 3,
     title: "PID控制算法设计与优化",
     description: "分段PID控制算法的设计与实现，减少启停时间，加快反应速度。在智能车速度控制和方向控制中的实际应用。",
     category: "control",
@@ -144,7 +165,7 @@ export const algorithms = [
     tags: ["控制算法", "PID", "自动控制"]
   },
   {
-    id: 3,
+    id: 4,
     title: "机械臂运动学算法",
     description: "五轴机械臂的正运动学和逆运动学算法开发。包含轨迹规划、碰撞检测和实时控制的完整解决方案。",
     category: "robotics",
@@ -154,7 +175,7 @@ export const algorithms = [
     tags: ["机器人学", "运动学", "轨迹规划"]
   },
   {
-    id: 4,
+    id: 5,
     title: "3D几何算法在切片软件中的应用",
     description: "多边形布尔运算、轮廓偏移采样与射线求交算法在3D打印切片软件中的实现。保障路径质量与工艺兼容性。",
     category: "geometry",
@@ -231,7 +252,7 @@ export const timeline = [
     title: "自动化专业 本科",
     organization: "广东技术师范大学",
     location: "广州",
-    period: "2018.09 - 2022.06",
+    period: "2019.08 - 2023.06",
     description: "主修自动化专业，专注于控制系统、嵌入式开发和算法设计。在校期间参与多个机器人和智能车竞赛项目，积累了丰富的工程实践经验。"
   },
   {
@@ -249,7 +270,7 @@ export const timeline = [
     title: "广东省电子设计大赛",
     organization: "广东省教育厅",
     location: "广东",
-    period: "2021.04 - 2021.06",
+    period: "2022.04 - 2022.06",
     description: "基于人工智能的超市捡货机器人项目。负责模型训练和上位机开发，使用百度飞桨平台训练模型，通过TCP协议实现通信，获得省级奖项。"
   },
   {
@@ -267,7 +288,7 @@ export const timeline = [
     title: "机械臂开发工程师",
     organization: "深圳市力安机器人有限公司",
     location: "深圳",
-    period: "2022.07 - 2022.08",
+    period: "2022.09 - 2024.02",
     description: "负责机械臂控制系统开发和嵌入式软件开发。实现了五轴机械臂的正逆运动学算法，开发基于VR技术的机械臂轨迹规划系统，完成TCP通信协议与上位机的对接。"
   },
   {
@@ -276,7 +297,7 @@ export const timeline = [
     title: "图形学算法工程师",
     organization: "广州市瑞通增材科技有限公司",
     location: "广州",
-    period: "2022.09 - 至今",
+    period: "2024.05 - 至今",
     description: "负责智能化3D打印切片软件和活动矫治器设计软件的算法开发。开发姿态优化、智能摆放、自动支撑生成等核心算法，集成GPU编程加速和多边形布尔运算，通过3D渲染技术和几何计算实现数字化设计与制造。"
   }
 ]

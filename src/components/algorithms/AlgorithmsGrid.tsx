@@ -108,10 +108,7 @@ export default function AlgorithmsGrid() {
               </div>
 
               {/* 底部信息 */}
-              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                <div className="flex items-center space-x-4 text-xs text-gray-500">
-                  <span>{new Date(algorithm.publishDate).toLocaleDateString('zh-CN')}</span>
-                </div>
+              <div className="flex items-center justify-end pt-4 border-t border-gray-100">
                 <Link
                   href={`/algorithms/${algorithm.id}`}
                   className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center space-x-1 group/link"

@@ -34,7 +34,7 @@ export default function AboutStory() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 个人故事 */}
+        {/* 职业定位 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,14 +43,11 @@ export default function AboutStory() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-            我的故事
+            我的职业
           </h2>
           <div className="max-w-4xl mx-auto">
             {/* 职业目标 */}
-            <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8 mb-8">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
-                💡 我的职业目标
-              </h3>
+            <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8">
               <p className="text-lg text-gray-700 leading-relaxed text-center">
                 专注于<strong>工业软件</strong>与<strong>3D可视化</strong>领域，
                 致力于开发高性能、用户友好的专业软件系统。
@@ -58,32 +55,6 @@ export default function AboutStory() {
                 为制造业和医疗行业提供创新的数字化解决方案。
               </p>
             </div>
-
-            {/* 我的故事 */}
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              我的编程之路始于中学时期读到的《乔布斯传》。书中那句"活着就是为了改变世界"深深触动了我，
-              让我意识到技术的力量。从那时起，我开始自学编程，从最基础的语法到算法设计，
-              每一行代码都承载着对技术世界的好奇与热爱。
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              为了更系统地学习，我在中学时期参加了职业培训班，并报名参加了NOIP（信息学奥林匹克）竞赛。
-              虽然在市赛中顺利通过，但由于缺乏竞赛专项训练，最终选择放弃省赛。
-              这段经历让我明白：<strong>技术之路不在于一时的成败，而在于持续的学习和积累</strong>。
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              大学期间，我投入到智能车竞赛中，从车道线识别到PID控制，每一个算法都让我重新理解了代码的力量。
-              两次全国竞赛的获奖经历，锻炼了我在硬件限制下追求极致性能的能力，
-              也让我学会了如何将理论知识转化为实际工程解决方案。
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              毕业后，我进入工业软件领域，从3D打印切片软件到正畸设计系统，
-              我深深体会到<strong>技术不仅仅是工具，更是连接创意与现实的桥梁</strong>。
-              在开发中，我始终追求代码的优雅性和系统的健壮性，用C++/Qt构建专业级应用。
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              现在的我，专注于计算机图形学、几何算法和GPU加速技术，
-              希望能够通过技术创新，为工业制造和医疗健康带来更高效的数字化解决方案。
-            </p>
           </div>
         </motion.div>
 
