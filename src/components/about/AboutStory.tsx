@@ -2,35 +2,37 @@
 
 import { motion } from 'framer-motion'
 import { Heart, Lightbulb, Target, Rocket } from 'lucide-react'
-
-const values = [
-  {
-    icon: Heart,
-    title: '热爱编程',
-    description: '从第一行代码开始，我就深深被编程的魅力所吸引。每一个问题都是一个待解的谜题，每一行代码都承载着创造的喜悦。',
-    color: 'from-red-500 to-pink-500'
-  },
-  {
-    icon: Lightbulb,
-    title: '持续学习',
-    description: '技术日新月异，我始终保持好奇心和学习的热情。从新框架到设计模式，从算法优化到用户体验，每天都在成长。',
-    color: 'from-yellow-500 to-orange-500'
-  },
-  {
-    icon: Target,
-    title: '追求完美',
-    description: '优雅的代码、流畅的用户体验、高效的性能——我相信细节决定成败，每一个项目都力求做到最好。',
-    color: 'from-green-500 to-emerald-500'
-  },
-  {
-    icon: Rocket,
-    title: '创新思维',
-    description: '不满足于现状，总是在寻找更好的解决方案。用技术改变世界，用创新驱动进步，这是我的信念。',
-    color: 'from-blue-500 to-purple-500'
-  }
-]
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function AboutStory() {
+  const { language, t } = useLanguage()
+  
+  const values = [
+    {
+      icon: Heart,
+      title: t.about.values.passion.title,
+      description: t.about.values.passion.description,
+      color: 'from-red-500 to-pink-500'
+    },
+    {
+      icon: Lightbulb,
+      title: t.about.values.learning.title,
+      description: t.about.values.learning.description,
+      color: 'from-yellow-500 to-orange-500'
+    },
+    {
+      icon: Target,
+      title: t.about.values.excellence.title,
+      description: t.about.values.excellence.description,
+      color: 'from-green-500 to-emerald-500'
+    },
+    {
+      icon: Rocket,
+      title: t.about.values.innovation.title,
+      description: t.about.values.innovation.description,
+      color: 'from-blue-500 to-purple-500'
+    }
+  ]
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,16 +45,13 @@ export default function AboutStory() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-            我的职业
+            {t.about.career.title}
           </h2>
           <div className="max-w-4xl mx-auto">
             {/* 职业目标 */}
             <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8">
               <p className="text-lg text-gray-700 leading-relaxed text-center">
-                专注于<strong>工业软件</strong>与<strong>3D可视化</strong>领域，
-                致力于开发高性能、用户友好的专业软件系统。
-                希望能够将计算机图形学、算法优化和工程实践结合，
-                为制造业和医疗行业提供创新的数字化解决方案。
+                {t.about.career.description}
               </p>
             </div>
           </div>
@@ -67,7 +66,7 @@ export default function AboutStory() {
           className="mb-16"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-12">
-            我的价值观
+            {t.about.values.title}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => {
@@ -107,28 +106,28 @@ export default function AboutStory() {
           className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8 text-center"
         >
           <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-            工作之外的我
+            {t.about.beyondWork.title}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="text-4xl mb-2">☕</div>
-              <div className="text-sm font-medium text-gray-700">咖啡品鉴</div>
+              <div className="text-sm font-medium text-gray-700">{t.about.beyondWork.coffee}</div>
             </div>
             <div className="text-center">
               <div className="text-4xl mb-2">📚</div>
-              <div className="text-sm font-medium text-gray-700">技术阅读</div>
+              <div className="text-sm font-medium text-gray-700">{t.about.beyondWork.reading}</div>
             </div>
             <div className="text-center">
               <div className="text-4xl mb-2">🎵</div>
-              <div className="text-sm font-medium text-gray-700">音乐欣赏</div>
+              <div className="text-sm font-medium text-gray-700">{t.about.beyondWork.music}</div>
             </div>
             <div className="text-center">
               <div className="text-4xl mb-2">🏃</div>
-              <div className="text-sm font-medium text-gray-700">跑步健身</div>
+              <div className="text-sm font-medium text-gray-700">{t.about.beyondWork.fitness}</div>
             </div>
           </div>
           <p className="text-gray-600 mt-6">
-            我相信生活的丰富性能够为工作带来更多的灵感和创意
+            {t.about.beyondWork.inspiration}
           </p>
         </motion.div>
       </div>

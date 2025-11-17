@@ -44,7 +44,7 @@ const typeLabelsEn = {
 }
 
 export default function AboutTimeline() {
-  const { language } = useLanguage()
+  const { language, t } = useLanguage()
   const typeLabels = language === 'zh' ? typeLabelsZh : typeLabelsEn
   
   return (
@@ -59,10 +59,10 @@ export default function AboutTimeline() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {language === 'zh' ? '我的经历' : 'My Journey'}
+            {t.about.timeline.title}
           </h2>
           <p className="text-xl text-gray-600">
-            {language === 'zh' ? '从学生到专业工程师的成长历程' : 'From student to professional engineer'}
+            {t.about.timeline.subtitle}
           </p>
         </motion.div>
 
@@ -152,25 +152,23 @@ export default function AboutTimeline() {
         >
           <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8">
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-              {language === 'zh' ? '未来规划' : 'Future Plans'}
+              {t.about.timeline.futurePlans}
             </h3>
             <p className="text-gray-600 mb-6 max-w-3xl mx-auto">
-              {language === 'zh' 
-                ? '继续深耕计算机图形学和算法开发领域，探索更多工业软件的应用场景。希望能够开发出更多有价值的技术产品，用专业技能解决实际问题。'
-                : 'Continue to deepen my expertise in computer graphics and algorithm development, exploring more application scenarios in industrial software. Hope to develop more valuable technical products and solve real-world problems with professional skills.'}
+              {t.about.timeline.futureDescription}
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <span className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm font-medium">
-                {language === 'zh' ? '技术专家' : 'Technical Expert'}
+                {t.about.timeline.technicalExpert}
               </span>
               <span className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm font-medium">
-                {language === 'zh' ? '算法优化' : 'Algorithm Optimization'}
+                {t.about.timeline.algorithmOptimization}
               </span>
               <span className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm font-medium">
-                {language === 'zh' ? '工业软件' : 'Industrial Software'}
+                {t.about.timeline.industrialSoftware}
               </span>
               <span className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm font-medium">
-                {language === 'zh' ? '持续学习' : 'Continuous Learning'}
+                {t.about.timeline.continuousLearning}
               </span>
             </div>
           </div>

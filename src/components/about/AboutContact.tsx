@@ -9,49 +9,51 @@ import {
   Download,
   ExternalLink
 } from 'lucide-react'
-
-const contactMethods = [
-  {
-    icon: Mail,
-    title: '邮箱',
-    value: '19854814168@163.com',
-    href: 'mailto:19854814168@163.com',
-    description: '商务合作或技术交流',
-    color: 'from-blue-500 to-cyan-500'
-  },
-  {
-    icon: MessageCircle,
-    title: '微信',
-    value: '19854814168',
-    href: '#',
-    description: '扫码添加微信好友',
-    color: 'from-green-500 to-emerald-500'
-  }
-]
-
-const quickLinks = [
-  {
-    title: '查看我的项目',
-    description: '浏览我的作品集',
-    href: '/projects',
-    icon: ArrowRight
-  },
-  {
-    title: '学习算法',
-    description: '探索算法教程',
-    href: '/algorithms',
-    icon: ArrowRight
-  },
-  {
-    title: '下载简历',
-    description: 'PDF格式简历',
-    href: '/resume.pdf',
-    icon: Download,
-    external: true
-  }
-]
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function AboutContact() {
+  const { language, t } = useLanguage()
+  
+  const contactMethods = [
+    {
+      icon: Mail,
+      title: t.about.contact.email,
+      value: '19854814168@163.com',
+      href: 'mailto:19854814168@163.com',
+      description: t.about.contact.businessCooperation,
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      icon: MessageCircle,
+      title: t.about.contact.wechat,
+      value: '19854814168',
+      href: '#',
+      description: t.about.contact.addWechat,
+      color: 'from-green-500 to-emerald-500'
+    }
+  ]
+
+  const quickLinks = [
+    {
+      title: t.about.contact.viewProjects,
+      description: t.about.contact.browsePortfolio,
+      href: '/projects',
+      icon: ArrowRight
+    },
+    {
+      title: t.about.contact.learnAlgorithms,
+      description: t.about.contact.exploreAlgorithms,
+      href: '/algorithms',
+      icon: ArrowRight
+    },
+    {
+      title: t.about.contact.downloadResume,
+      description: t.about.contact.resumePdf,
+      href: '/resume.pdf',
+      icon: Download,
+      external: true
+    }
+  ]
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,11 +66,10 @@ export default function AboutContact() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            让我们联系
+            {t.about.contact.title}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            有项目合作想法？想要技术交流？或者只是想打个招呼？
-            我很乐意与你交流！
+            {t.about.contact.subtitle}
           </p>
         </motion.div>
 
@@ -83,7 +84,7 @@ export default function AboutContact() {
               className="mb-8"
             >
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                联系方式
+                {t.about.contact.contactMethods}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {contactMethods.map((method, index) => {
@@ -132,25 +133,25 @@ export default function AboutContact() {
               className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200"
             >
               <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                当前状态
+                {t.about.contact.currentStatus}
               </h4>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-gray-700">开放远程工作机会</span>
+                  <span className="text-gray-700">{t.about.contact.remoteWork}</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <span className="text-gray-700">项目合作咨询中</span>
+                  <span className="text-gray-700">{t.about.contact.projectConsulting}</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                  <span className="text-gray-700">技术交流随时欢迎</span>
+                  <span className="text-gray-700">{t.about.contact.techExchange}</span>
                 </div>
               </div>
               <div className="mt-4 p-4 bg-primary-50 rounded-lg">
                 <p className="text-sm text-primary-700">
-                  <strong>响应时间:</strong> 通常在24小时内回复邮件和消息
+                  <strong>{t.about.contact.responseTime}</strong> {t.about.contact.responseDetail}
                 </p>
               </div>
             </motion.div>
@@ -165,7 +166,7 @@ export default function AboutContact() {
               viewport={{ once: true }}
             >
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                快速导航
+                {t.about.contact.quickNav}
               </h3>
               <div className="space-y-4">
                 {quickLinks.map((link, index) => {
@@ -218,24 +219,24 @@ export default function AboutContact() {
               {/* 工作时间 */}
               <div className="mt-8 p-6 bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl">
                 <h4 className="font-semibold text-gray-900 mb-3">
-                  工作时间
+                  {t.about.contact.workingHours}
                 </h4>
                 <div className="space-y-2 text-sm text-gray-600">
                   <div className="flex justify-between">
-                    <span>周一 - 周五</span>
-                    <span>9:00 - 18:00</span>
+                    <span>{t.about.contact.weekdays}</span>
+                    <span>{t.about.contact.weekdaysTime}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>周末</span>
-                    <span>10:00 - 16:00</span>
+                    <span>{t.about.contact.weekend}</span>
+                    <span>{t.about.contact.weekendTime}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>时区</span>
-                    <span>GMT+8</span>
+                    <span>{t.about.contact.timezone}</span>
+                    <span>{t.about.contact.timezoneValue}</span>
                   </div>
                 </div>
                 <p className="text-xs text-gray-500 mt-3">
-                  * 紧急项目可以灵活安排时间
+                  {t.about.contact.urgentNote}
                 </p>
               </div>
             </motion.div>
@@ -252,18 +253,17 @@ export default function AboutContact() {
         >
           <div className="bg-gradient-to-r from-primary-600 to-blue-600 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-semibold mb-4">
-              准备开始你的项目了吗？
+              {t.about.contact.readyToStart}
             </h3>
             <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-              无论是Web应用开发、算法优化，还是技术咨询，
-              我都很乐意为你提供专业的帮助。让我们一起创造些精彩的东西！
+              {t.about.contact.ctaDescription}
             </p>
             <a
               href="mailto:19854814168@163.com"
               className="inline-flex items-center space-x-2 bg-white text-primary-600 px-8 py-3 rounded-lg font-medium hover:bg-primary-50 transition-colors"
             >
               <Mail className="w-5 h-5" />
-              <span>立即联系我</span>
+              <span>{t.about.contact.contactNow}</span>
             </a>
           </div>
         </motion.div>

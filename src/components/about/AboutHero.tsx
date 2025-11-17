@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion'
 import { Download, MapPin, Calendar, Coffee } from 'lucide-react'
 import { siteConfig } from '@/config/site'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function AboutHero() {
+  const { language, t } = useLanguage()
   return (
     <section className="relative py-20 gradient-bg overflow-hidden">
       {/* 背景装饰 */}
@@ -22,33 +24,32 @@ export default function AboutHero() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              你好，我是
+              {t.about.greeting}
               <br />
               <span className="text-gradient">{siteConfig.name}</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-              一名充满热情的全栈开发者，专注于创造优雅的用户体验和高效的解决方案。
-              热爱学习新技术，享受解决复杂问题的过程。
+              {t.about.subtitle}
             </p>
 
             {/* 基本信息 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               <div className="flex items-center space-x-3 text-gray-600">
                 <MapPin className="w-5 h-5 text-primary-600" />
-                <span>广州，中国</span>
+                <span>{t.about.location}</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Calendar className="w-5 h-5 text-primary-600" />
-                <span>3+ 年经验</span>
+                <span>{t.about.experience}</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Coffee className="w-5 h-5 text-primary-600" />
-                <span>咖啡爱好者</span>
+                <span>{t.about.coffeeEnthusiast}</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Download className="w-5 h-5 text-primary-600" />
-                <span>可远程工作</span>
+                <span>{t.about.remoteAvailable}</span>
               </div>
             </div>
 
@@ -60,13 +61,13 @@ export default function AboutHero() {
                 className="btn-primary inline-flex items-center space-x-2"
               >
                 <Download className="w-5 h-5" />
-                <span>下载简历</span>
+                <span>{t.about.downloadResume}</span>
               </a>
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:19854814168@163.com"
                 className="btn-secondary inline-flex items-center space-x-2"
               >
-                <span>联系我</span>
+                <span>{t.about.contactMe}</span>
               </a>
             </div>
           </motion.div>
@@ -86,7 +87,7 @@ export default function AboutHero() {
               <div className="absolute inset-2 bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-2xl">
                 <img 
                   src="/images/profile.jpg" 
-                  alt="个人照片" 
+                  alt={language === 'zh' ? '个人照片' : 'Profile Photo'} 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -114,15 +115,15 @@ export default function AboutHero() {
         >
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">6+</div>
-            <div className="text-gray-600">完成项目</div>
+            <div className="text-gray-600">{t.about.completedProjects}</div>
           </div>
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">3+</div>
-            <div className="text-gray-600">年开发经验</div>
+            <div className="text-gray-600">{t.about.yearsExperience}</div>
           </div>
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">3+</div>
-            <div className="text-gray-600">竞赛获奖</div>
+            <div className="text-gray-600">{t.about.competitionAwards}</div>
           </div>
         </motion.div>
       </div>

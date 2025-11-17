@@ -5,9 +5,9 @@ import AboutTimeline from '@/components/about/AboutTimeline'
 import AboutContact from '@/components/about/AboutContact'
 
 export const metadata: Metadata = {
-  title: '关于我',
-  description: '了解我的技术背景、职业目标和项目经历。专注于C++/Qt开发、计算机图形学和工业软件领域。',
-  keywords: ['个人简介', 'C++开发', 'Qt', '计算机图形学', '工业软件', '3D可视化']
+  title: '关于我 | About Me',
+  description: '了解我的技术背景、职业目标和项目经历。专注于C++/Qt开发、计算机图形学和工业软件领域。Learn about my technical background, career goals and project experience. Focused on C++/Qt development, computer graphics and industrial software.',
+  keywords: ['个人简介', 'C++开发', 'Qt', '计算机图形学', '工业软件', '3D可视化', 'About Me', 'C++ Development', 'Computer Graphics', 'Industrial Software', '3D Visualization']
 }
 
 export default function AboutPage() {

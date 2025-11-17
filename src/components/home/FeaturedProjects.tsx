@@ -44,21 +44,28 @@ export default function FeaturedProjects() {
               viewport={{ once: true }}
               className="card overflow-hidden group hover:shadow-xl transition-all duration-300"
             >
-              {/* 媒体区域：优先使用视频，其次图片 */}
+              {/* 媒体区域：优先使用视频/GIF，其次图片 */}
               <div className="relative h-48 overflow-hidden">
-                {/** 如果在 site.ts 为该项目配置了 video，则优先播放视频 */}
-                {/** 建议视频放在 /public/videos/projects 下，字段为 /videos/projects/xxx.mp4 */}
-                {/** 为了在部分浏览器自动播放，需 muted + playsInline */}
+                {/** 如果在 site.ts 为该项目配置了 video，则优先播放视频/GIF */}
+                {/** GIF 格式建议放在 /public/videos/projects 下，字段为 /videos/projects/xxx.gif */}
                 {project.video ? (
-                  <video
-                    className="absolute inset-0 w-full h-full object-cover"
-                    src={project.video}
-                    poster={project.image}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                  />
+                  project.video.endsWith('.gif') ? (
+                    <img
+                      className="absolute inset-0 w-full h-full object-cover"
+                      src={project.video}
+                      alt={project.title}
+                    />
+                  ) : (
+                    <video
+                      className="absolute inset-0 w-full h-full object-cover"
+                      src={project.video}
+                      poster={project.image}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
+                  )
                 ) : (
                   <Image
                     src={project.image}

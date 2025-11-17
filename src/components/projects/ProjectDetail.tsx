@@ -350,7 +350,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           {
             year: "第十六届（2021）",
             award: "全国一等奖（20/565）",
-            video: "/images/projects/smartCar/first_year.mp4",
+            video: "/images/projects/smartCar/first_year.gif",
             videoAspect: "9:16", // 竖屏视频
             rules: [
               "从起点出发，在跑道内行驶一圈，最终回到起点",
@@ -366,7 +366,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           {
             year: "第十七届（2022）",
             award: "全国二等奖",
-            video: "/images/projects/smartCar/second_year.mp4",
+            video: "/images/projects/smartCar/second_year.gif",
             videoAspect: "16:9", // 横屏视频
             rules: [
               "从起点出发，在跑道内行驶一圈，最终回到起点",
@@ -1513,17 +1513,25 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                       {competition.videoAspect === "9:16" ? (
                         // 第一年：竖屏视频，左右布局
                         <div className="grid md:grid-cols-2 gap-8">
-                          {/* 左侧：视频 */}
+                          {/* 左侧：视频/GIF */}
                           <div className="flex justify-center">
                             <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ width: '360px', height: '640px' }}>
-                              <video
-                                controls
-                                className="w-full h-full object-cover"
-                                poster="/images/projects/smartCar/home_page.jpg"
-                              >
-                                <source src={competition.video} type="video/mp4" />
-                                您的浏览器不支持视频播放。
-                              </video>
+                              {competition.video.endsWith('.gif') ? (
+                                <img
+                                  className="w-full h-full object-cover"
+                                  src={competition.video}
+                                  alt={`${competition.year} 比赛视频`}
+                                />
+                              ) : (
+                                <video
+                                  controls
+                                  className="w-full h-full object-cover"
+                                  poster="/images/projects/smartCar/home_page.jpg"
+                                >
+                                  <source src={competition.video} type="video/mp4" />
+                                  您的浏览器不支持视频播放。
+                                </video>
+                              )}
                             </div>
                           </div>
 
@@ -1560,18 +1568,27 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           </div>
                         </div>
                       ) : (
-                        // 第二年：横屏视频，上下布局
+                        // 第二年：横屏视频/GIF，上下布局
                         <div className="space-y-6">
-                          {/* 上方：视频 */}
+                          {/* 上方：视频/GIF */}
                           <div className="relative rounded-xl overflow-hidden shadow-lg">
-                            <video
-                              controls
-                              className="w-full"
-                              style={{ maxHeight: '500px' }}
-                            >
-                              <source src={competition.video} type="video/mp4" />
-                              您的浏览器不支持视频播放。
-                            </video>
+                            {competition.video.endsWith('.gif') ? (
+                              <img
+                                className="w-full"
+                                style={{ maxHeight: '500px', objectFit: 'contain' }}
+                                src={competition.video}
+                                alt={`${competition.year} 比赛视频`}
+                              />
+                            ) : (
+                              <video
+                                controls
+                                className="w-full"
+                                style={{ maxHeight: '500px' }}
+                              >
+                                <source src={competition.video} type="video/mp4" />
+                                您的浏览器不支持视频播放。
+                              </video>
+                            )}
                           </div>
 
                           {/* 下方：规则和证书 */}
