@@ -1,9 +1,11 @@
 'use client'
 
+import { useLanguage } from '@/contexts/LanguageContext'
 import { motion } from 'framer-motion'
 import { FolderOpen, Code, Zap } from 'lucide-react'
 
 export default function ProjectsHero() {
+  const { language, text } = useLanguage()
   return (
     <section className="relative py-20 gradient-bg overflow-hidden">
       {/* 背景装饰 */}
@@ -31,9 +33,7 @@ export default function ProjectsHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
-        >
-          我的
-          <span className="text-gradient ml-3">项目展示</span>
+        >{text("我的")}<span className="text-gradient ml-3">{text("项目展示")}</span>
         </motion.h1>
 
         {/* 描述 */}
@@ -42,11 +42,7 @@ export default function ProjectsHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed"
-        >
-          从创意到实现，每一个项目都承载着我的技术探索和创新思考。
-          <br />
-          涵盖CAD软件开发、Web应用开发、机械臂轨迹规划等多个领域。
-        </motion.p>
+        >{text("从创意到实现，每一个项目都承载着我的技术探索和创新思考。")}<br />{text("涵盖CAD软件开发、Web应用开发、机械臂轨迹规划等多个领域。")}</motion.p>
 
         {/* 统计数据 */}
         <motion.div
@@ -61,7 +57,7 @@ export default function ProjectsHero() {
             </div>
             <div>
               <div className="text-2xl font-bold text-gray-900">6+</div>
-              <div className="text-sm text-gray-600">完成项目</div>
+              <div className="text-sm text-gray-600">{text("完成项目")}</div>
             </div>
           </div>
 
@@ -71,7 +67,7 @@ export default function ProjectsHero() {
             </div>
             <div>
               <div className="text-2xl font-bold text-gray-900">5+</div>
-              <div className="text-sm text-gray-600">技术栈</div>
+              <div className="text-sm text-gray-600">{text("技术栈")}</div>
             </div>
           </div>
 
@@ -81,7 +77,7 @@ export default function ProjectsHero() {
             </div>
             <div>
               <div className="text-2xl font-bold text-gray-900">3+</div>
-              <div className="text-sm text-gray-600">竞赛获奖</div>
+              <div className="text-sm text-gray-600">{text("竞赛获奖")}</div>
             </div>
           </div>
         </motion.div>
@@ -92,9 +88,7 @@ export default function ProjectsHero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-gray-500"
-        >
-          点击项目卡片查看详细信息和演示
-        </motion.p>
+        >{text("点击项目卡片查看详细信息和演示")}</motion.p>
       </div>
     </section>
   )

@@ -10,7 +10,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 const featuredProjects = projects.filter(project => project.featured)
 
 export default function FeaturedProjects() {
-  const { language, t } = useLanguage()
+  const { language, t, text } = useLanguage()
   
   return (
     <section className="py-20 bg-white">
@@ -28,7 +28,7 @@ export default function FeaturedProjects() {
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             {language === 'zh' 
-              ? '每个项目都专注于解决实际问题，从性能优化到用户体验，展现完整的工程实践能力' 
+              ? text("每个项目都专注于解决实际问题，从性能优化到用户体验，展现完整的工程实践能力")
               : 'Each project focuses on solving real-world problems, demonstrating complete engineering practices from performance optimization to user experience'}
           </p>
         </motion.div>
@@ -53,7 +53,7 @@ export default function FeaturedProjects() {
                     <img
                       className="absolute inset-0 w-full h-full object-cover"
                       src={project.video}
-                      alt={project.title}
+                      alt={text(project.title)}
                     />
                   ) : (
                     <video
@@ -69,7 +69,7 @@ export default function FeaturedProjects() {
                 ) : (
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={text(project.title)}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -86,7 +86,7 @@ export default function FeaturedProjects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-3 bg-white rounded-full text-gray-900 hover:bg-primary-600 hover:text-white transition-colors"
-                        aria-label="查看演示"
+                        aria-label={text("查看演示")}
                       >
                         <ExternalLink className="w-5 h-5" />
                       </a>
@@ -98,20 +98,20 @@ export default function FeaturedProjects() {
               {/* 项目信息 */}
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
-                  {project.title}
+                  {text(project.title)}
                 </h3>
                 <p className="text-gray-600 mb-4 line-clamp-3">
-                  {project.description}
+                  {text(project.description)}
                 </p>
 
                 {/* 技术标签 */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
                     <span
-                      key={tech}
+                      key={text(tech)}
                       className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full"
                     >
-                      {tech}
+                      {text(tech)}
                     </span>
                   ))}
                 </div>
@@ -122,7 +122,7 @@ export default function FeaturedProjects() {
                     href={`/projects/${project.id}`}
                     className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center space-x-1 group/link"
                   >
-                    <span>了解更多</span>
+                    <span>{text("了解更多")}</span>
                     <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                   
@@ -133,7 +133,7 @@ export default function FeaturedProjects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-500 hover:text-gray-700 transition-colors"
-                        aria-label="演示"
+                        aria-label={text("演示")}
                       >
                         <ExternalLink className="w-5 h-5" />
                       </a>
@@ -157,7 +157,7 @@ export default function FeaturedProjects() {
             href="/projects"
             className="btn-primary inline-flex items-center space-x-2 group"
           >
-            <span>查看所有项目</span>
+            <span>{text("查看所有项目")}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

@@ -1,5 +1,6 @@
 'use client'
 
+import { useLanguage } from '@/contexts/LanguageContext'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Filter, Search, X } from 'lucide-react'
@@ -28,6 +29,7 @@ export default function ProjectsFilter({
   onTechChange, 
   onSearchChange 
 }: ProjectsFilterProps) {
+  const { language, text } = useLanguage()
   const [activeCategory, setActiveCategory] = useState('all')
   const [selectedTechs, setSelectedTechs] = useState<string[]>([])
   const [searchTerm, setSearchTerm] = useState('')
@@ -77,7 +79,7 @@ export default function ProjectsFilter({
             type="text"
             value={searchTerm}
             onChange={(e) => handleSearchChange(e.target.value)}
-            placeholder="搜索项目..."
+            placeholder={text("搜索项目...")}
             className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
           />
           {searchTerm && (
@@ -109,7 +111,7 @@ export default function ProjectsFilter({
                   : 'bg-white text-gray-700 hover:bg-primary-50 hover:text-primary-600 border border-gray-200'
               }`}
             >
-              {category.name}
+              {text(category.name)}
               <span className="ml-2 text-sm opacity-75">({category.count})</span>
             </button>
           ))}
@@ -128,7 +130,7 @@ export default function ProjectsFilter({
           className="inline-flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-primary-600 transition-colors"
         >
           <Filter className="w-4 h-4" />
-          <span>技术栈筛选</span>
+          <span>{text("技术栈筛选")}</span>
           {selectedTechs.length > 0 && (
             <span className="bg-primary-100 text-primary-700 px-2 py-1 rounded-full text-xs">
               {selectedTechs.length}
@@ -146,7 +148,7 @@ export default function ProjectsFilter({
             <div className="flex flex-wrap justify-center gap-2">
               {technologies.map((tech) => (
                 <button
-                  key={tech}
+                  key={text(tech)}
                   onClick={() => handleTechToggle(tech)}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                     selectedTechs.includes(tech)
@@ -154,7 +156,7 @@ export default function ProjectsFilter({
                       : 'bg-white text-gray-700 hover:bg-primary-50 hover:text-primary-600 border border-gray-200'
                   }`}
                 >
-                  {tech}
+                  {text(tech)}
                 </button>
               ))}
             </div>
@@ -174,7 +176,7 @@ export default function ProjectsFilter({
             className="inline-flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-primary-600 transition-colors"
           >
             <X className="w-4 h-4" />
-            <span>清除所有筛选</span>
+            <span>{text("清除所有筛选")}</span>
           </button>
         </motion.div>
       )}

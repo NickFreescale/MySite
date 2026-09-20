@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import ProjectsGrid from '@/components/projects/ProjectsGrid'
 import ProjectsHero from '@/components/projects/ProjectsHero'
 import ProjectsFilter from '@/components/projects/ProjectsFilter'
+import LocalizedPageTitle from '@/components/layout/LocalizedPageTitle'
 
 export const metadata: Metadata = {
   title: '项目展示',
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen pt-16">
+      <LocalizedPageTitle title="项目展示" />
       <ProjectsHero />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <ProjectsFilter />

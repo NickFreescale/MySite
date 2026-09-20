@@ -1,5 +1,6 @@
 'use client'
 
+import { useLanguage } from '@/contexts/LanguageContext'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { 
@@ -85,6 +86,7 @@ interface AlgorithmCategoriesProps {
 }
 
 export default function AlgorithmCategories({ onCategoryChange }: AlgorithmCategoriesProps) {
+  const { language, text } = useLanguage()
   const [activeCategory, setActiveCategory] = useState('all')
 
   const handleCategoryChange = (categoryId: string) => {
@@ -100,12 +102,8 @@ export default function AlgorithmCategories({ onCategoryChange }: AlgorithmCateg
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
-          算法分类
-        </h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          按照不同的算法类型组织，从基础到高级，系统性学习
-        </p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">{text("算法分类")}</h2>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto">{text("按照不同的算法类型组织，从基础到高级，系统性学习")}</p>
       </motion.div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
@@ -140,7 +138,7 @@ export default function AlgorithmCategories({ onCategoryChange }: AlgorithmCateg
                   <h3 className={`font-semibold transition-colors ${
                     isActive ? 'text-primary-700' : 'text-gray-900 group-hover:text-primary-600'
                   }`}>
-                    {category.name}
+                    {text(category.name)}
                   </h3>
                   <span className={`text-sm px-2 py-1 rounded-full ${
                     isActive 
@@ -153,7 +151,7 @@ export default function AlgorithmCategories({ onCategoryChange }: AlgorithmCateg
                 <p className={`text-sm transition-colors ${
                   isActive ? 'text-primary-600' : 'text-gray-500 group-hover:text-primary-500'
                 }`}>
-                  {category.description}
+                  {text(category.description)}
                 </p>
               </div>
 
@@ -179,31 +177,23 @@ export default function AlgorithmCategories({ onCategoryChange }: AlgorithmCateg
       >
         <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8">
           <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            {categories.find(c => c.id === activeCategory)?.name || '全部算法'}
+            {text(categories.find(c => c.id === activeCategory)?.name || "全部算法")}
           </h3>
           <p className="text-gray-600 mb-6">
-            {activeCategory === 'all' && '探索所有算法类别，从基础概念到高级应用'}
-            {activeCategory === 'sorting' && '学习各种排序算法的原理、实现和性能分析'}
-            {activeCategory === 'searching' && '掌握高效的搜索策略和查找技术'}
-            {activeCategory === 'tree' && '深入理解树结构和相关算法应用'}
-            {activeCategory === 'dp' && '掌握动态规划思想，解决复杂优化问题'}
-            {activeCategory === 'graph' && '学习图论算法，处理复杂网络问题'}
-            {activeCategory === 'greedy' && '理解贪心策略，解决局部最优问题'}
-            {activeCategory === 'string' && '掌握字符串处理和模式匹配算法'}
+            {activeCategory === 'all' && text("探索所有算法类别，从基础概念到高级应用")}
+            {activeCategory === 'sorting' && text("学习各种排序算法的原理、实现和性能分析")}
+            {activeCategory === 'searching' && text("掌握高效的搜索策略和查找技术")}
+            {activeCategory === 'tree' && text("深入理解树结构和相关算法应用")}
+            {activeCategory === 'dp' && text("掌握动态规划思想，解决复杂优化问题")}
+            {activeCategory === 'graph' && text("学习图论算法，处理复杂网络问题")}
+            {activeCategory === 'greedy' && text("理解贪心策略，解决局部最优问题")}
+            {activeCategory === 'string' && text("掌握字符串处理和模式匹配算法")}
           </p>
           <div className="flex flex-wrap justify-center gap-2">
-            <span className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">
-              可视化演示
-            </span>
-            <span className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">
-              代码实现
-            </span>
-            <span className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">
-              复杂度分析
-            </span>
-            <span className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">
-              应用场景
-            </span>
+            <span className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">{text("可视化演示")}</span>
+            <span className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">{text("代码实现")}</span>
+            <span className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">{text("复杂度分析")}</span>
+            <span className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">{text("应用场景")}</span>
           </div>
         </div>
       </motion.div>

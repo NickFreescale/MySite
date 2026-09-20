@@ -1,40 +1,49 @@
 'use client'
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react'
 import { zh, Translations } from '@/locales/zh'
 import { en } from '@/locales/en'
-
-type Language = 'zh' | 'en'
+import { Language, translateContent } from '@/locales/content'
 
 interface LanguageContextType {
   language: Language
   setLanguage: (lang: Language) => void
   t: Translations
+  text: (source: string) => string
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>('zh')
-  const [translations, setTranslations] = useState<Translations>(zh)
+  const translations = language === 'zh' ? zh : en
+  const text = useCallback((source: string) => translateContent(source, language), [language])
 
   // 初始化时从 localStorage 读取语言设置
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') as Language
-    if (savedLanguage && (savedLanguage === 'zh' || savedLanguage === 'en')) {
-      setLanguageState(savedLanguage)
-      setTranslations(savedLanguage === 'zh' ? zh : en)
+    try {
+      const savedLanguage = localStorage.getItem('language')
+      if (savedLanguage === 'zh' || savedLanguage === 'en') setLanguageState(savedLanguage)
+    } catch {
+      // Language switching remains available when browser storage is disabled.
     }
   }, [])
 
+  useEffect(() => {
+    document.documentElement.lang = language === 'en' ? 'en' : 'zh-CN'
+  }, [language])
+
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
-    setTranslations(lang === 'zh' ? zh : en)
-    localStorage.setItem('language', lang)
+    try {
+      localStorage.setItem('language', lang)
+    } catch {
+      // Saving the preference is optional; the current page still updates.
+    }
   }
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t: translations }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t: translations, text }}>
       {children}
     </LanguageContext.Provider>
   )

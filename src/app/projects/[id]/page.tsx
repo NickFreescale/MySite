@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import ProjectDetail from '@/components/projects/ProjectDetail'
 import { projects } from '@/config/site'
+import LocalizedPageTitle from '@/components/layout/LocalizedPageTitle'
 
 type Props = {
   params: { id: string }
@@ -36,7 +37,10 @@ export default function ProjectPage({ params }: Props) {
     notFound()
   }
 
-  return <ProjectDetail project={project} />
+  return <>
+    <LocalizedPageTitle title={project.title} />
+    <ProjectDetail project={project} />
+  </>
 }
 
 

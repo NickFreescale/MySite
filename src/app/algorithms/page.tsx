@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import AlgorithmsHero from '@/components/algorithms/AlgorithmsHero'
 import AlgorithmsGrid from '@/components/algorithms/AlgorithmsGrid'
+import LocalizedPageTitle from '@/components/layout/LocalizedPageTitle'
 
 export const metadata: Metadata = {
   title: '技术笔记',
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function AlgorithmsPage() {
   return (
     <div className="min-h-screen pt-16">
+      <LocalizedPageTitle title="技术笔记" />
       <AlgorithmsHero />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <AlgorithmsGrid />

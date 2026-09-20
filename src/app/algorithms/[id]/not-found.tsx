@@ -1,10 +1,16 @@
+'use client'
+
+import { useLanguage } from '@/contexts/LanguageContext'
+import LocalizedPageTitle from '@/components/layout/LocalizedPageTitle'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Home } from 'lucide-react'
 
 export default function AlgorithmNotFound() {
+  const { language, text } = useLanguage()
   return (
     <div className="min-h-screen pt-16 bg-gray-50">
+      <LocalizedPageTitle title="技术笔记未找到" />
       {/* 返回按钮 */}
       <div className="bg-white py-4 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,7 +19,7 @@ export default function AlgorithmNotFound() {
             className="inline-flex items-center space-x-2 text-gray-600 hover:text-primary-600 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>返回技术笔记列表</span>
+            <span>{text("返回技术笔记列表")}</span>
           </Link>
         </div>
       </div>
@@ -26,19 +32,15 @@ export default function AlgorithmNotFound() {
             <div className="relative w-full max-w-2xl aspect-video mb-8">
               <Image
                 src="/images/projects/To_be_continue.jpg"
-                alt="内容整理中"
+                alt={text("内容整理中")}
                 fill
                 className="object-contain"
               />
             </div>
 
             {/* 提示信息 */}
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              技术笔记未找到
-            </h1>
-            <p className="text-gray-600 text-center max-w-md mb-8">
-              抱歉，您访问的技术笔记不存在或正在整理中。
-            </p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">{text("技术笔记未找到")}</h1>
+            <p className="text-gray-600 text-center max-w-md mb-8">{text("抱歉，您访问的技术笔记不存在或正在整理中。")}</p>
 
             {/* 操作按钮 */}
             <div className="flex flex-col sm:flex-row gap-4">
@@ -47,14 +49,14 @@ export default function AlgorithmNotFound() {
                 className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
-                <span>返回技术笔记</span>
+                <span>{text("返回技术笔记")}</span>
               </Link>
               <Link
                 href="/"
                 className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
               >
                 <Home className="w-4 h-4" />
-                <span>返回首页</span>
+                <span>{text("返回首页")}</span>
               </Link>
             </div>
           </div>

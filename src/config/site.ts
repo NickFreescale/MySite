@@ -142,7 +142,8 @@ export const algorithms = [
     readTime: "20 分钟",
     publishDate: "2024-05-01",
     tags: ["计算几何", "遗传算法", "自动排版", "碰撞检测"],
-    contentFile: "images/algorithms/nesting/二维不规则多边形自动排版报告 copy.md"  // Markdown文件路径（相对于public目录）
+    contentFile: "images/algorithms/nesting/二维不规则多边形自动排版报告 copy.md",  // Markdown文件路径（相对于public目录）
+    contentFileEn: "images/algorithms/nesting/irregular-polygon-nesting.en.md"
   },
   {
     id: 2,

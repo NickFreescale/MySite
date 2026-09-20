@@ -1,5 +1,6 @@
 'use client'
 
+import { useLanguage } from '@/contexts/LanguageContext'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Clock, TrendingUp, BookOpen, ArrowRight } from 'lucide-react'
@@ -14,6 +15,7 @@ const difficultyColors = {
 }
 
 export default function RecentAlgorithms() {
+  const { language, text } = useLanguage()
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,12 +27,8 @@ export default function RecentAlgorithms() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            最新算法讲解
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            深入浅出地讲解经典算法，配合可视化演示，让复杂的概念变得简单易懂
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{text("最新算法讲解")}</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">{text("深入浅出地讲解经典算法，配合可视化演示，让复杂的概念变得简单易懂")}</p>
         </motion.div>
 
         {/* 算法卡片网格 */}
@@ -52,14 +50,14 @@ export default function RecentAlgorithms() {
                     <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
                       <TrendingUp className="w-10 h-10 text-white" />
                     </div>
-                    <p className="text-gray-600 text-sm">算法可视化</p>
+                    <p className="text-gray-600 text-sm">{text("算法可视化")}</p>
                   </div>
                 </div>
                 
                 {/* 难度标签 */}
                 <div className="absolute top-4 left-4">
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${difficultyColors[algorithm.difficulty as keyof typeof difficultyColors]}`}>
-                    {algorithm.difficulty}
+                    {text(algorithm.difficulty)}
                   </span>
                 </div>
               </div>
@@ -71,30 +69,30 @@ export default function RecentAlgorithms() {
                   <span className="font-medium text-primary-600">{algorithm.category}</span>
                   <div className="flex items-center space-x-1">
                     <Clock className="w-4 h-4" />
-                    <span>{algorithm.readTime}</span>
+                    <span>{text(algorithm.readTime)}</span>
                   </div>
                 </div>
 
                 {/* 标题 */}
                 <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
                   <Link href={`/algorithms/${algorithm.id}`}>
-                    {algorithm.title}
+                    {text(algorithm.title)}
                   </Link>
                 </h3>
 
                 {/* 描述 */}
                 <p className="text-gray-600 mb-4 line-clamp-3">
-                  {algorithm.description}
+                  {text(algorithm.description)}
                 </p>
 
                 {/* 标签 */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {algorithm.tags.map((tag) => (
                     <span
-                      key={tag}
+                      key={text(tag)}
                       className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md"
                     >
-                      {tag}
+                      {text(tag)}
                     </span>
                   ))}
                 </div>
@@ -102,13 +100,13 @@ export default function RecentAlgorithms() {
                 {/* 底部信息 */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                   <span className="text-sm text-gray-500">
-                    {new Date(algorithm.publishDate).toLocaleDateString('zh-CN')}
+                    {new Date(algorithm.publishDate).toLocaleDateString(language === 'en' ? 'en-US' : 'zh-CN', { timeZone: 'UTC' })}
                   </span>
                   <Link
                     href={`/algorithms/${algorithm.id}`}
                     className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center space-x-1 group/link"
                   >
-                    <span>阅读详情</span>
+                    <span>{text("阅读详情")}</span>
                     <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -128,19 +126,19 @@ export default function RecentAlgorithms() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
             <div>
               <div className="text-3xl font-bold text-primary-600 mb-2">25+</div>
-              <div className="text-gray-600">算法讲解</div>
+              <div className="text-gray-600">{text("算法讲解")}</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-primary-600 mb-2">8</div>
-              <div className="text-gray-600">算法分类</div>
+              <div className="text-gray-600">{text("算法分类")}</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-primary-600 mb-2">15+</div>
-              <div className="text-gray-600">可视化演示</div>
+              <div className="text-gray-600">{text("可视化演示")}</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-primary-600 mb-2">1000+</div>
-              <div className="text-gray-600">代码示例</div>
+              <div className="text-gray-600">{text("代码示例")}</div>
             </div>
           </div>
         </motion.div>
@@ -158,7 +156,7 @@ export default function RecentAlgorithms() {
             className="btn-primary inline-flex items-center space-x-2 group"
           >
             <BookOpen className="w-5 h-5" />
-            <span>探索所有算法</span>
+            <span>{text("探索所有算法")}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

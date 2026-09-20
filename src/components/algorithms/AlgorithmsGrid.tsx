@@ -1,5 +1,6 @@
 'use client'
 
+import { useLanguage } from '@/contexts/LanguageContext'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -28,6 +29,7 @@ const categoryIcons = {
 }
 
 export default function AlgorithmsGrid() {
+  const { language, text } = useLanguage()
   const [filteredAlgorithms] = useState(algorithms)
 
   return (
@@ -51,14 +53,14 @@ export default function AlgorithmsGrid() {
                   <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <CategoryIcon className="w-10 h-10 text-white" />
                   </div>
-                  <p className="text-gray-600 text-sm">算法可视化</p>
+                  <p className="text-gray-600 text-sm">{text("算法可视化")}</p>
                 </div>
               </div>
               
               {/* 难度标签 */}
               <div className="absolute top-4 left-4 flex space-x-2">
                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${difficultyColors[algorithm.difficulty as keyof typeof difficultyColors]}`}>
-                  {algorithm.difficulty}
+                  {text(algorithm.difficulty)}
                 </span>
               </div>
 
@@ -71,38 +73,38 @@ export default function AlgorithmsGrid() {
                 <div className="flex items-center space-x-2">
                   <CategoryIcon className="w-4 h-4" />
                   <span className="font-medium text-primary-600">
-                    {algorithm.category === 'algorithm' && '算法优化'}
-                    {algorithm.category === 'control' && '控制算法'}
-                    {algorithm.category === 'robotics' && '机器人学'}
-                    {algorithm.category === 'geometry' && '计算几何'}
+                    {algorithm.category === 'algorithm' && text("算法优化")}
+                    {algorithm.category === 'control' && text("控制算法")}
+                    {algorithm.category === 'robotics' && text("机器人学")}
+                    {algorithm.category === 'geometry' && text("计算几何")}
                   </span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <Clock className="w-4 h-4" />
-                  <span>{algorithm.readTime}</span>
+                  <span>{text(algorithm.readTime)}</span>
                 </div>
               </div>
 
               {/* 标题 */}
               <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
                 <Link href={`/algorithms/${algorithm.id}`}>
-                  {algorithm.title}
+                  {text(algorithm.title)}
                 </Link>
               </h3>
 
               {/* 描述 */}
               <p className="text-gray-600 mb-4 text-sm line-clamp-3">
-                {algorithm.description}
+                {text(algorithm.description)}
               </p>
 
               {/* 标签 */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {algorithm.tags.map((tag) => (
                   <span
-                    key={tag}
+                    key={text(tag)}
                     className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md"
                   >
-                    {tag}
+                    {text(tag)}
                   </span>
                 ))}
               </div>
@@ -113,7 +115,7 @@ export default function AlgorithmsGrid() {
                   href={`/algorithms/${algorithm.id}`}
                   className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center space-x-1 group/link"
                 >
-                  <span className="text-sm">学习</span>
+                  <span className="text-sm">{text("学习")}</span>
                   <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>

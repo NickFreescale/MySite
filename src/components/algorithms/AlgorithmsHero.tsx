@@ -1,9 +1,11 @@
 'use client'
 
+import { useLanguage } from '@/contexts/LanguageContext'
 import { motion } from 'framer-motion'
 import { BookOpen, TrendingUp, Brain, Zap } from 'lucide-react'
 
 export default function AlgorithmsHero() {
+  const { language, text } = useLanguage()
   return (
     <section className="relative py-20 gradient-bg overflow-hidden">
       {/* 背景装饰 */}
@@ -32,7 +34,7 @@ export default function AlgorithmsHero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
           >
-            <span className="text-gradient">技术笔记</span>
+            <span className="text-gradient">{text("技术笔记")}</span>
           </motion.h1>
 
           {/* 描述 */}
@@ -41,9 +43,7 @@ export default function AlgorithmsHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed"
-          >
-            记录开发过程中的技术心得、算法优化和工程实践经验
-          </motion.p>
+          >{text("记录开发过程中的技术心得、算法优化和工程实践经验")}</motion.p>
 
         {/* 特色统计 */}
         <motion.div
@@ -59,7 +59,7 @@ export default function AlgorithmsHero() {
               </div>
             </div>
             <div className="text-2xl font-bold text-gray-900 mb-1">25+</div>
-            <div className="text-sm text-gray-600">算法讲解</div>
+            <div className="text-sm text-gray-600">{text("算法讲解")}</div>
           </div>
 
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm">
@@ -69,7 +69,7 @@ export default function AlgorithmsHero() {
               </div>
             </div>
             <div className="text-2xl font-bold text-gray-900 mb-1">8</div>
-            <div className="text-sm text-gray-600">算法分类</div>
+            <div className="text-sm text-gray-600">{text("算法分类")}</div>
           </div>
 
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm">
@@ -79,7 +79,7 @@ export default function AlgorithmsHero() {
               </div>
             </div>
             <div className="text-2xl font-bold text-gray-900 mb-1">15+</div>
-            <div className="text-sm text-gray-600">可视化演示</div>
+            <div className="text-sm text-gray-600">{text("可视化演示")}</div>
           </div>
 
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm">
@@ -89,7 +89,7 @@ export default function AlgorithmsHero() {
               </div>
             </div>
             <div className="text-2xl font-bold text-gray-900 mb-1">3</div>
-            <div className="text-sm text-gray-600">难度等级</div>
+            <div className="text-sm text-gray-600">{text("难度等级")}</div>
           </div>
         </motion.div>
 
@@ -100,17 +100,15 @@ export default function AlgorithmsHero() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 max-w-4xl mx-auto"
         >
-          <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-            推荐学习路径
-          </h3>
+          <h3 className="text-2xl font-semibold text-gray-900 mb-4">{text("推荐学习路径")}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             <div className="flex items-start space-x-3">
               <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold">
                 1
               </div>
               <div>
-                <h4 className="font-medium text-gray-900">基础算法</h4>
-                <p className="text-sm text-gray-600">排序、搜索、基础数据结构</p>
+                <h4 className="font-medium text-gray-900">{text("基础算法")}</h4>
+                <p className="text-sm text-gray-600">{text("排序、搜索、基础数据结构")}</p>
               </div>
             </div>
             <div className="flex items-start space-x-3">
@@ -118,8 +116,8 @@ export default function AlgorithmsHero() {
                 2
               </div>
               <div>
-                <h4 className="font-medium text-gray-900">进阶算法</h4>
-                <p className="text-sm text-gray-600">动态规划、图论、贪心算法</p>
+                <h4 className="font-medium text-gray-900">{text("进阶算法")}</h4>
+                <p className="text-sm text-gray-600">{text("动态规划、图论、贪心算法")}</p>
               </div>
             </div>
             <div className="flex items-start space-x-3">
@@ -127,8 +125,8 @@ export default function AlgorithmsHero() {
                 3
               </div>
               <div>
-                <h4 className="font-medium text-gray-900">高级算法</h4>
-                <p className="text-sm text-gray-600">字符串算法、高级数据结构</p>
+                <h4 className="font-medium text-gray-900">{text("高级算法")}</h4>
+                <p className="text-sm text-gray-600">{text("字符串算法、高级数据结构")}</p>
               </div>
             </div>
           </div>

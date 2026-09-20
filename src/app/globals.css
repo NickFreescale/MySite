@@ -74,6 +74,27 @@
   @apply bg-gray-100 text-gray-900 px-2 py-1 rounded text-sm;
 }
 
+/* Keep translated articles readable, including long English tables and formulas. */
+.note-content {
+  @apply text-gray-700 leading-relaxed;
+  overflow-wrap: anywhere;
+}
+.note-content h1 { @apply text-3xl mt-10 mb-5; }
+.note-content h2 { @apply text-2xl mt-10 mb-4; }
+.note-content h3 { @apply text-xl mt-8 mb-3; }
+.note-content h4 { @apply text-lg mt-6 mb-2; }
+.note-content p, .note-content ul, .note-content ol, .note-content pre { @apply my-4; }
+.note-content ul { @apply list-disc pl-6; }
+.note-content ol { @apply list-decimal pl-6; }
+.note-content li { @apply my-1; }
+.note-content blockquote { @apply border-l-4 border-primary-200 pl-4 my-6 italic; }
+.note-content hr { @apply my-8 border-gray-200; }
+.note-content table { @apply block max-w-full overflow-x-auto my-6 text-sm; }
+.note-content th, .note-content td { @apply border border-gray-200 px-4 py-3 text-left align-top; }
+.note-content th { @apply bg-gray-50 font-semibold text-gray-900; }
+.note-content pre code { @apply bg-transparent text-inherit p-0; }
+.note-content img { @apply max-w-full rounded-lg; }
+
 /* 滚动条样式 */
 ::-webkit-scrollbar {
   width: 8px;
