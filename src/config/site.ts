@@ -13,6 +13,10 @@ export const siteConfig = {
   
   // 网站信息
   url: "https://nickfreescale-mysite.vercel.app", 
+  resume: {
+    zh: "/resume.pdf",
+    en: "/resume-en-ats.pdf"
+  },
   
   // 统计数据
   stats: {

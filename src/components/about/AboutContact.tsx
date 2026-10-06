@@ -10,6 +10,7 @@ import {
   ExternalLink
 } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { siteConfig } from '@/config/site'
 
 export default function AboutContact() {
   const { language, t } = useLanguage()
@@ -49,7 +50,7 @@ export default function AboutContact() {
     {
       title: t.about.contact.downloadResume,
       description: t.about.contact.resumePdf,
-      href: '/resume.pdf',
+      href: siteConfig.resume[language],
       icon: Download,
       external: true
     }

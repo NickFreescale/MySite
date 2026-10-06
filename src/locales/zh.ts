@@ -163,7 +163,7 @@ export const zh = {
       learnAlgorithms: "学习算法",
       exploreAlgorithms: "探索算法教程",
       downloadResume: "下载简历",
-      resumePdf: "PDF格式简历",
+      resumePdf: "中文简历 · PDF 格式",
       workingHours: "工作时间",
       weekdays: "周一 - 周五",
       weekdaysTime: "9:00 - 18:00",

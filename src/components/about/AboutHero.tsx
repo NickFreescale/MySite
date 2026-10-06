@@ -56,7 +56,7 @@ export default function AboutHero() {
             {/* 行动按钮 */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="/resume.pdf"
+                href={siteConfig.resume[language]}
                 download
                 className="btn-primary inline-flex items-center space-x-2"
               >

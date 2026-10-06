@@ -165,7 +165,7 @@ export const en: Translations = {
       learnAlgorithms: "Learn Algorithms",
       exploreAlgorithms: "Explore algorithm tutorials",
       downloadResume: "Download Resume",
-      resumePdf: "PDF format resume",
+      resumePdf: "English resume · ATS-friendly PDF",
       workingHours: "Working Hours",
       weekdays: "Monday - Friday",
       weekdaysTime: "9:00 - 18:00",
